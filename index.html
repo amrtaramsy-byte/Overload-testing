@@ -75,7 +75,9 @@
 
           <!-- الموديل منفرداً -->
           <div class="col-span-7">
-            <label id="lblModel" class="block text-[11px] font-extrabold text-slate-600 mb-1">موديل الأوفرلود (كل موديل منفصل)</label>
+            <div class="flex items-center justify-between mb-1">
+              <label id="lblModel" class="block text-[11px] font-extrabold text-slate-600">موديل ورينج الأوفرلود</label>
+            </div>
             <select id="modelSelect" onchange="onModelChange()" class="w-full bg-slate-50 border-2 border-slate-300 rounded-lg px-2 py-1.5 text-xs font-extrabold text-slate-900 focus:outline-none focus:border-blue-600"></select>
           </div>
         </div>
@@ -126,8 +128,8 @@
             <label id="lblRatio" class="block text-[11px] font-extrabold text-slate-700 mb-1">نسبة تيار الاختبار</label>
             <div class="grid grid-cols-3 gap-1.5">
               <button type="button" onclick="setMult(1.5)" id="m15" class="py-2 rounded-xl font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300 cursor-pointer">150%</button>
-              <button type="button" onclick="setMult(2.0)" id="m20" class="py-2 rounded-xl font-extrabold text-xs bg-blue-700 text-white shadow cursor-pointer">200%</button>
-              <button type="button" onclick="setMult(3.0)" id="m30" class="py-2 rounded-xl font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300 cursor-pointer">300%</button>
+              <button type="button" onclick="setMult(2.0)" id="m20" class="py-2 rounded-xl font-extrabold text-xs bg-slate-100 text-slate-800 border border-slate-300 cursor-pointer">200%</button>
+              <button type="button" onclick="setMult(3.0)" id="m30" class="py-2 rounded-xl font-extrabold text-xs bg-blue-700 text-white shadow cursor-pointer">300%</button>
             </div>
           </div>
         </div>
@@ -149,12 +151,32 @@
         </div>
       </div>
 
-      <!-- البطاقة 3: إدخال الزمن الفعلي والنتيجة الفورية -->
+      <!-- البطاقة 3: التايمر (Stopwatch) وإدخال الزمن الفعلي والنتيجة الفورية -->
       <div class="bg-white rounded-2xl p-2.5 shadow-sm border-2 border-emerald-400 space-y-2">
+        
+        <!-- ساعة الإيقاف المدمجة (Stopwatch) فوق إدخال الزمن -->
+        <div class="bg-slate-900 text-white rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-700">
+          <div class="flex items-center gap-2 px-1">
+            <span class="text-amber-400 text-base">⏱️</span>
+            <div>
+              <div id="lblStopwatchTitle" class="text-[10px] text-slate-300 font-bold leading-tight">ساعة إيقاف الاختبار (Stopwatch)</div>
+              <div id="stopwatchDisplay" class="text-xl font-black text-amber-400 font-mono tracking-wider">0.0 s</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button type="button" onclick="toggleStopwatch()" id="btnStopwatchToggle" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer flex items-center gap-1">
+              <span>▶</span> <span id="lblSwStart">بدء</span>
+            </button>
+            <button type="button" onclick="resetStopwatch()" id="btnStopwatchReset" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-extrabold text-xs px-2.5 py-2 rounded-xl border border-slate-600 cursor-pointer">
+              🔄 <span id="lblSwReset">تصفير</span>
+            </button>
+          </div>
+        </div>
+
         <div class="grid grid-cols-12 gap-2 items-end">
           <div class="col-span-8">
-            <label id="lblActualTime" class="block text-xs font-black text-slate-800 mb-1">⏱️ اكتب زمن الفصل الفعلي (بالثواني):</label>
-            <input type="number" id="measuredTimeInput" step="0.1" placeholder="مثال: 22.5" oninput="evaluateTime()" class="w-full bg-slate-50 border-2 border-blue-600 rounded-xl px-3 py-1.5 text-lg font-black text-center text-slate-900 focus:bg-white focus:outline-none" />
+            <label id="lblActualTime" class="block text-xs font-black text-slate-800 mb-1">✍️ أو اكتب زمن الفصل الفعلي (بالثواني):</label>
+            <input type="number" id="measuredTimeInput" step="0.1" placeholder="مثال: 22.4" oninput="evaluateTime()" class="w-full bg-slate-50 border-2 border-blue-600 rounded-xl px-3 py-1.5 text-lg font-black text-center text-slate-900 focus:bg-white focus:outline-none" />
           </div>
           <div class="col-span-4">
             <button type="button" onclick="saveRecord()" id="btnSave" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs py-2.5 rounded-xl shadow cursor-pointer">
@@ -165,7 +187,7 @@
 
         <!-- صندوق النتيجة (ناجح / راسب) -->
         <div id="verdictBox" class="rounded-xl p-2.5 text-center bg-slate-100 border-2 border-slate-300">
-          <div id="verdictTitle" class="text-sm font-black text-slate-700">أدخل زمن الفصل بالثواني لإظهار النتيجة</div>
+          <div id="verdictTitle" class="text-sm font-black text-slate-700">شغل التايمر أو أدخل زمن الفصل لإظهار النتيجة</div>
           <div id="verdictSub" class="text-[11px] font-bold text-slate-500 mt-0.5">يتم التقييم فوراً طبقاً لمنحنيات داتاشيت المصنع</div>
         </div>
       </div>
@@ -225,92 +247,136 @@
 
     <!-- ==================== التاب الثالث: شرح البرنامج وطريقة الاختبار ==================== -->
     <section id="tab3" class="hidden space-y-2.5">
-      <div class="bg-white rounded-2xl p-3.5 shadow-sm border-2 border-amber-500 space-y-3 text-xs sm:text-sm leading-relaxed">
+      <div class="bg-white rounded-2xl p-3.5 shadow-sm border-2 border-amber-500 space-y-3.5 text-xs sm:text-sm leading-relaxed">
         <h2 id="guideMainTitle" class="text-base font-black text-amber-950 border-b pb-1.5">📘 دليل الفني المختصر لاختبار الأوفرلود</h2>
 
+        <!-- 1. خطوات الاستخدام -->
         <div class="space-y-1.5">
-          <h3 class="font-extrabold text-blue-900">1️⃣ طريقة استخدام البرنامج خطوة بخطوة:</h3>
-          <ul class="list-disc pr-5 space-y-1 text-slate-700 font-semibold">
-            <li>اختر <b>الماركة</b> (ABB أو Schneider) ثم اختر <b>الموديل</b> المطابق للأوفرلود.</li>
-            <li>حدد <b>فئة الفصل (10 أو 20 أو 30)</b> وحالة الأوفرلود (<b>بارد</b> إذا كان في حرارة الغرفة بدون تشغيل سابق، أو <b>ساخن</b> إذا كان محملاً بتيار 100% حتى الاستقرار الحراري).</li>
+          <h3 id="gSec1Title" class="font-extrabold text-blue-900">1️⃣ طريقة استخدام البرنامج خطوة بخطوة:</h3>
+          <ul id="gSec1List" class="list-disc pr-5 space-y-1 text-slate-700 font-semibold">
+            <li>اختر <b>الماركة</b> (ABB أو Schneider) ثم اختر <b>الموديل ورينج الأمبير</b> المطابق للأوفرلود.</li>
+            <li>حدد <b>فئة الفصل (10 أو 20 أو 30)</b> وحالة الأوفرلود (<b>بارد Cold</b> أو <b>ساخن Hot</b>).</li>
             <li>اكتب <b>تدريج الأمبير (Ir)</b> المضبوط عليه مؤشر الأوفرلود، ثم اختر نسبة تيار الاختبار (<b>150%</b> أو <b>200%</b> أو <b>300%</b>).</li>
             <li>احقن التيار الظاهر في خانة <b>"تيار الحقن المطلوب"</b>، ثم اكتب زمن الفصل الفعلي بالثواني ليظهر لك الحكم الفوري (<b>ناجح PASS</b> أو <b>راسب FAIL</b>).</li>
           </ul>
         </div>
 
-        <div class="space-y-1.5 pt-2 border-t">
-          <h3 class="font-extrabold text-emerald-900">2️⃣ طريقة التوصيل والاختبار العملي بجهاز الحقن:</h3>
-          <ul class="list-disc pr-5 space-y-1 text-slate-700 font-semibold">
-            <li><b>التوصيل القياسي (3 فاز توالي):</b> وصل كابل التيار في الفازة الأولى (1L1-2T1) ثم كوبري إلى الفازة الثانية (3L2-4T2) ثم كوبري إلى الفازة الثالثة (5L3-6T3) ليمر التيار في الثلاث شرائح الحرارية بالتساوي.</li>
-            <li><b>اختبار سقوط فازة (2 فاز):</b> عند حقن فازتين فقط وترك الثالثة مفتوحة، يعمل الميكانيزم التفاضلي ويفصل الأوفرلود في زمن أسرع لحماية المحرك.</li>
-            <li><b>إيقاف التايمر تلقائياً:</b> وصل النقطة المغلقة <b>(95-96 NC)</b> بمدخل إيقاف العداد (Timer Stop) في جهاز الحقن.</li>
-          </ul>
+        <!-- 2. معنى الاختبار البارد والساخن -->
+        <div class="space-y-2 pt-2 border-t border-slate-200">
+          <h3 id="gSec2Title" class="font-extrabold text-orange-800">2️⃣ ما معنى الاختبار على البارد (Cold) والاختبار على الساخن (Hot)؟</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <!-- شرح البارد -->
+            <div class="bg-sky-50 border-2 border-sky-300 rounded-xl p-2.5">
+              <div id="gColdTitle" class="font-black text-sky-900 text-xs sm:text-sm mb-1">❄️ الاختبار على البارد (Cold Test):</div>
+              <p id="gColdDesc" class="text-[11px] sm:text-xs text-slate-700 font-semibold leading-relaxed">
+                يتم والأوفرلود في <b>درجة حرارة الغرفة</b> (لم يمر به تيار قبل الاختبار أو تُرك يبرد تماماً). نبدأ بحقن تيار الاختبار (مثلاً 200% أو 300%) مباشرة من الصفر، ويكون زمن الفصل أطول لأن الشرائح الحرارية تبدأ باردة.
+              </p>
+            </div>
+            <!-- شرح الساخن -->
+            <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-2.5">
+              <div id="gHotTitle" class="font-black text-orange-900 text-xs sm:text-sm mb-1">🔥 الاختبار على الساخن (Hot Test):</div>
+              <p id="gHotDesc" class="text-[11px] sm:text-xs text-slate-700 font-semibold leading-relaxed">
+                يحاكي حدوث عطل والمحرك يعمل بالفعل في الخدمة؛ حيث نحقن أولاً <b>تيار الضبط الأساسي (100% × Ir)</b> لفترة كافية حتى تسخن الشرائح وتصل للاتزان الحراري، ثم نرفع التيار فوراً لنسبة الاختبار (150% أو 200% أو 300%)، ولذلك يفصل الأوفرلود في <b>زمن أقصر بكثير</b> (حوالي 25% إلى 35% من زمن البارد).
+              </p>
+            </div>
+          </div>
         </div>
 
-        <!-- جدول مرجعي من داتاشيت المصنع بدون ذكر أسماء أكواد قياسية -->
+        <!-- 3. رسمة توصيل الأوفرلود بجهاز الحقن -->
+        <div class="space-y-2 pt-2 border-t border-slate-200">
+          <h3 id="gSec3Title" class="font-extrabold text-emerald-900">3️⃣ رسمة توصيل الأوفرلود مع جهاز حقن التيار (3 فاز توالي + التايمر):</h3>
+          <p id="gSec3Desc" class="text-[11px] text-slate-600 font-semibold">
+            لتمرير نفس التيار في الأقطاب الثلاثة معاً، يتم توصيل الفازات الثلاثة <b>على التوالي (Series Loop)</b> مع توصيل النقطة المغلقة <b>(95-96 NC)</b> بمدخل إيقاف التايمر:
+          </p>
+
         <div class="space-y-1.5 pt-2 border-t">
-          <h3 class="font-extrabold text-slate-900">3️⃣ جدول أزمنة الفصل المرجعية (منحنيات داتاشيت المصنع - 3 فاز):</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-[11px] text-center border border-slate-300 font-bold">
-              <thead class="bg-slate-900 text-white">
-                <tr>
-                  <th class="p-1.5 border">الفئة</th>
-                  <th class="p-1.5 border">النسبة</th>
-                  <th class="p-1.5 border bg-sky-900">بارد (Cold)</th>
-                  <th class="p-1.5 border bg-orange-900">ساخن (Hot)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-200">
-                <tr class="bg-blue-50/50">
-                  <td class="p-1 border font-black" rowspan="3">Class 10</td>
-                  <td class="p-1 border">150%</td>
-                  <td class="p-1 border">60s – 150s (مثالي 90s)</td>
-                  <td class="p-1 border">20s – 60s (مثالي 35s)</td>
-                </tr>
-                <tr class="bg-blue-50/50">
-                  <td class="p-1 border">200%</td>
-                  <td class="p-1 border">15s – 35s (مثالي 24s)</td>
-                  <td class="p-1 border">5s – 12s (مثالي 8s)</td>
-                </tr>
-                <tr class="bg-blue-50/50">
-                  <td class="p-1 border">300%</td>
-                  <td class="p-1 border">5s – 12s (مثالي 8s)</td>
-                  <td class="p-1 border">1.8s – 4.5s (مثالي 3s)</td>
-                </tr>
-                <tr>
-                  <td class="p-1 border font-black" rowspan="3">Class 20</td>
-                  <td class="p-1 border">150%</td>
-                  <td class="p-1 border">100s – 260s (مثالي 165s)</td>
-                  <td class="p-1 border">35s – 105s (مثالي 62s)</td>
-                </tr>
-                <tr>
-                  <td class="p-1 border">200%</td>
-                  <td class="p-1 border">30s – 70s (مثالي 48s)</td>
-                  <td class="p-1 border">10s – 24s (مثالي 16s)</td>
-                </tr>
-                <tr>
-                  <td class="p-1 border">300%</td>
-                  <td class="p-1 border">10s – 24s (مثالي 16s)</td>
-                  <td class="p-1 border">3.5s – 9s (مثالي 6s)</td>
-                </tr>
-                <tr class="bg-amber-50/40">
-                  <td class="p-1 border font-black" rowspan="3">Class 30</td>
-                  <td class="p-1 border">150%</td>
-                  <td class="p-1 border">150s – 380s (مثالي 240s)</td>
-                  <td class="p-1 border">50s – 150s (مثالي 90s)</td>
-                </tr>
-                <tr class="bg-amber-50/40">
-                  <td class="p-1 border">200%</td>
-                  <td class="p-1 border">45s – 105s (مثالي 72s)</td>
-                  <td class="p-1 border">15s – 36s (مثالي 24s)</td>
-                </tr>
-                <tr class="bg-amber-50/40">
-                  <td class="p-1 border">300%</td>
-                  <td class="p-1 border">15s – 36s (مثالي 24s)</td>
-                  <td class="p-1 border">5s – 13.5s (مثالي 9s)</td>
-                </tr>
-              </tbody>
-            </table>
+          <h3 class="font-extrabold text-emerald-900">2️⃣ معنى الاختبار البارد (Cold) والاختبار الساخن (Hot):</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+            <div class="bg-sky-50 border-2 border-sky-300 rounded-xl p-2.5">
+              <div class="font-black text-sky-900 text-xs mb-1">❄️ الاختبار على البارد (Cold Test):</div>
+              <p class="text-[11px] text-slate-700 font-semibold leading-relaxed">
+                يتم والأوفرلود بارد تماماً في درجة حرارة الغرفة (لم يمر به تيار قبل الاختبار). نبدأ بحقن تيار الاختبار (150% أو 200% أو 300%) مباشرة من الصفر، ويكون زمن الفصل أطول لأن الشريحة الحرارية تبدأ التسخين من البرودة.
+              </p>
+            </div>
+            <div class="bg-orange-50 border-2 border-orange-300 rounded-xl p-2.5">
+              <div class="font-black text-orange-900 text-xs mb-1">🔥 الاختبار على الساخن (Hot Test):</div>
+              <p class="text-[11px] text-slate-700 font-semibold leading-relaxed">
+                يتم بتمرير تيار الحمل المقنن (100% × Ir) أولاً لفترة كافية حتى تسخن الشرائح الحرارية وتصل للاستقرار الحراري (محاكاة موتور شغال فعلياً)، ثم نرفع التيار فجأة لنسبة الاختبار، فيفصل الأوفرلود في زمن أقصر بكثير.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- رسمة توصيل الأوفرلود بجهاز الحقن -->
+        <div class="space-y-2 pt-2 border-t">
+          <h3 class="font-extrabold text-slate-900">3️⃣ رسمة توصيل الأوفرلود بجهاز الاختبار (3 فاز توالي + نقطة التايمر):</h3>
+          <p class="text-[11px] text-slate-600 font-semibold">
+            يتم توصيل الأقطاب الثلاثة للأوفرلود على التوالي (Series) ليمر نفس تيار الحقن في الثلاث فازات معاً، وتوصيل النقطة المغلقة (95-96 NC) بمدخل إيقاف التايمر:
+          </p>
+          <div class="bg-slate-900 rounded-xl p-3 border-2 border-slate-700 overflow-x-auto">
+            <svg viewBox="0 0 520 230" class="w-full h-auto min-w-[320px]">
+              <!-- صندوق جهاز الحقن -->
+              <rect x="15" y="30" width="145" height="170" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+              <text x="87" y="55" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">جهاز حقن التيار</text>
+              <text x="87" y="72" fill="#94a3b8" font-size="10" font-weight="bold" text-anchor="middle">Injection Tester</text>
+
+              <!-- مخارج التيار -->
+              <circle cx="140" cy="105" r="6" fill="#ef4444"/>
+              <text x="125" y="109" fill="#fca5a5" font-size="10" font-weight="bold" text-anchor="end">I Out (+)</text>
+
+              <circle cx="140" cy="145" r="6" fill="#3b82f6"/>
+              <text x="125" y="149" fill="#93c5fd" font-size="10" font-weight="bold" text-anchor="end">I Return (-)</text>
+
+              <!-- مدخل التايمر -->
+              <circle cx="140" cy="180" r="5" fill="#fbbf24"/>
+              <text x="125" y="184" fill="#fde68a" font-size="10" font-weight="bold" text-anchor="end">Timer Stop</text>
+
+              <!-- صندوق الأوفرلود -->
+              <rect x="240" y="25" width="260" height="180" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="2.5"/>
+              <text x="370" y="48" fill="#34d399" font-size="13" font-weight="bold" text-anchor="middle">الأوفرلود (Overload Relay)</text>
+
+              <!-- الفازات الثلاثة 1L1-2T1, 3L2-4T2, 5L3-6T3 -->
+              <!-- L1 -->
+              <rect x="265" y="65" width="45" height="75" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="287" cy="77" r="4.5" fill="#e2e8f0"/>
+              <text x="287" y="61" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">1L1</text>
+              <path d="M287 82 L287 100 L295 106 L287 112 L287 125" stroke="#f97316" stroke-width="2.5" fill="none"/>
+              <circle cx="287" cy="128" r="4.5" fill="#e2e8f0"/>
+              <text x="287" y="153" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">2T1</text>
+
+              <!-- L2 -->
+              <rect x="330" y="65" width="45" height="75" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="352" cy="77" r="4.5" fill="#e2e8f0"/>
+              <text x="352" y="61" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">3L2</text>
+              <path d="M352 82 L352 100 L360 106 L352 112 L352 125" stroke="#f97316" stroke-width="2.5" fill="none"/>
+              <circle cx="352" cy="128" r="4.5" fill="#e2e8f0"/>
+              <text x="352" y="153" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">4T2</text>
+
+              <!-- L3 -->
+              <rect x="395" y="65" width="45" height="75" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="417" cy="77" r="4.5" fill="#e2e8f0"/>
+              <text x="417" y="61" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">5L3</text>
+              <path d="M417 82 L417 100 L425 106 L417 112 L417 125" stroke="#f97316" stroke-width="2.5" fill="none"/>
+              <circle cx="417" cy="128" r="4.5" fill="#e2e8f0"/>
+              <text x="417" y="153" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">6T3</text>
+
+              <!-- النقطة المساعدة 95-96 NC -->
+              <rect x="452" y="150" width="38" height="45" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+              <text x="471" y="164" fill="#fde68a" font-size="9" font-weight="bold" text-anchor="middle">95-96</text>
+              <text x="471" y="186" fill="#fbbf24" font-size="9" font-weight="bold" text-anchor="middle">(NC)</text>
+
+              <!-- أسلاك التوصيل (كباري التوالي) -->
+              <!-- من خرج التيار (+) إلى 1L1 -->
+              <path d="M146 105 L205 105 L205 77 L283 77" stroke="#ef4444" stroke-width="3" fill="none"/>
+              <!-- كوبري من 2T1 إلى 3L2 -->
+              <path d="M291 128 L318 128 L318 77 L348 77" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,2" fill="none"/>
+              <!-- كوبري من 4T2 إلى 5L3 -->
+              <path d="M356 128 L383 128 L383 77 L413 77" stroke="#eab308" stroke-width="2.5" stroke-dasharray="4,2" fill="none"/>
+              <!-- رجوع من 6T3 إلى (-) -->
+              <path d="M417 133 L417 165 L215 165 L215 145 L146 145" stroke="#3b82f6" stroke-width="3" fill="none"/>
+              <!-- سلك إيقاف التايمر من 95-96 -->
+              <path d="M452 180 L146 180" stroke="#fbbf24" stroke-width="2" stroke-dasharray="5,3" fill="none"/>
+            </svg>
           </div>
         </div>
       </div>
@@ -319,124 +385,426 @@
   </main>
 
   <script>
-    // ==================== 1. قاعدة بيانات الموديلات منفردة ====================
+    // ==================== 1. قاعدة بيانات الموديلات والرينجات التفصيلية ====================
     const RELAY_MODELS = {
       ABB: [
-        { id: 'TF42', name: 'ABB TF42 (0.10 - 38 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 10 },
-        { id: 'TF65', name: 'ABB TF65 (22 - 67 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 40 },
-        { id: 'TF96', name: 'ABB TF96 (40 - 96 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 65 },
-        { id: 'TF140', name: 'ABB TF140DU (66 - 142 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 100 },
-        { id: 'TA25DU', name: 'ABB TA25DU (0.1 - 25 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 10 },
-        { id: 'TA42DU', name: 'ABB TA42DU (18 - 42 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 25 },
-        { id: 'TA75DU', name: 'ABB TA75DU (29 - 75 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 50 },
-        { id: 'EF19', name: 'ABB EF19 (0.10 - 18.9 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 10 },
-        { id: 'EF45', name: 'ABB EF45 (9 - 45 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 30 },
-        { id: 'EF65', name: 'ABB EF65 (20 - 70 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 50 },
-        { id: 'EF96', name: 'ABB EF96 (36 - 100 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 80 },
-        { id: 'EF146', name: 'ABB EF146 (54 - 150 A) - Electronic', type: 'electronic', defaultClass: 10, defaultIr: 115 }
+        { id: 'TA25DU-0.16M', name: 'ABB TA25DU (0.10 - 0.16 A)', profile: 'TA25_016', allowedClasses: [10], defaultClass: 10, defaultIr: 0.14 },
+        { id: 'TA25DU-3.1M',  name: 'ABB TA25DU (2.20 - 3.10 A)', profile: 'TA25_31',  allowedClasses: [10], defaultClass: 10, defaultIr: 2.8 },
+        { id: 'TA25DU-4M',    name: 'ABB TA25DU (2.80 - 4.00 A)', profile: 'TA25_40',  allowedClasses: [10], defaultClass: 10, defaultIr: 3.5 },
+        { id: 'TA25DU-8.5M',  name: 'ABB TA25DU (6.00 - 8.50 A)', profile: 'TA25_85',  allowedClasses: [10], defaultClass: 10, defaultIr: 7.5 },
+        { id: 'TA25DU-11M',   name: 'ABB TA25DU (7.50 - 11.0 A)', profile: 'TA25_110', allowedClasses: [10], defaultClass: 10, defaultIr: 10.0 },
+        { id: 'TA25DU-14M',   name: 'ABB TA25DU (10.0 - 14.0 A)', profile: 'TA25_140', allowedClasses: [10], defaultClass: 10, defaultIr: 12.0 },
+        { id: 'TA25DU-25M',   name: 'ABB TA25DU (18.0 - 25.0 A)', profile: 'TA25_250', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
+        { id: 'TA42DU-25M',   name: 'ABB TA42DU/TA75DU (18.0 - 25.0 A)', profile: 'TA42_250', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
+        { id: 'TA42DU-32M',   name: 'ABB TA42DU/TA75DU (22.0 - 32.0 A)', profile: 'TA42_320', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
+        { id: 'TA75DU-42M',   name: 'ABB TA42DU/TA75DU (29.0 - 42.0 A)', profile: 'TA75_420', allowedClasses: [10], defaultClass: 10, defaultIr: 36.0 },
+        { id: 'TA75DU-52M',   name: 'ABB TA75DU/TA80DU (36.0 - 52.0 A)', profile: 'TA75_520', allowedClasses: [10], defaultClass: 10, defaultIr: 45.0 },
+        { id: 'TA75DU-63M',   name: 'ABB TA75DU/TA80DU (45.0 - 63.0 A)', profile: 'TA75_630', allowedClasses: [10], defaultClass: 10, defaultIr: 55.0 },
+        { id: 'TA75DU-80M',   name: 'ABB TA75DU/TA80DU (60.0 - 80.0 A)', profile: 'TA75_800', allowedClasses: [10], defaultClass: 10, defaultIr: 70.0 },
+        { id: 'TF42-0.74A',   name: 'ABB TF42 (0.10 - 4.0 A)',   profile: 'TF42_S',   allowedClasses: [10], defaultClass: 10, defaultIr: 2.0 },
+        { id: 'TF42-20A',     name: 'ABB TF42 (4.0 - 24.0 A)',   profile: 'TF42_M',   allowedClasses: [10], defaultClass: 10, defaultIr: 16.0 },
+        { id: 'TF42-38A',     name: 'ABB TF42 (24.0 - 38.0 A)',  profile: 'TF42_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 32.0 },
+        { id: 'TF65-47A',     name: 'ABB TF65 (22.0 - 47.0 A)',  profile: 'TF65_M',   allowedClasses: [10], defaultClass: 10, defaultIr: 40.0 },
+        { id: 'TF65-67A',     name: 'ABB TF65 (47.0 - 67.0 A)',  profile: 'TF65_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 55.0 },
+        { id: 'TF96-51A',     name: 'ABB TF96 (40.0 - 68.0 A)',  profile: 'TF96_M',   allowedClasses: [10], defaultClass: 10, defaultIr: 50.0 },
+        { id: 'TF96-96A',     name: 'ABB TF96 (68.0 - 96.0 A)',  profile: 'TF96_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 85.0 },
+        { id: 'EF19',         name: 'ABB EF19 (0.10 - 18.9 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 10 },
+        { id: 'EF45',         name: 'ABB EF45 (9.0 - 45.0 A) - Electronic',  profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 30 },
+        { id: 'EF65',         name: 'ABB EF65 (20.0 - 70.0 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 50 },
+        { id: 'EF96',         name: 'ABB EF96 (36.0 - 100 A) - Electronic',  profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 80 },
+        { id: 'EF146',        name: 'ABB EF146 (54.0 - 150 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 115 }
       ],
       SCHNEIDER: [
-        { id: 'LRD08', name: 'Schneider LRD08 (2.5 - 4 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 3.5 },
-        { id: 'LRD10', name: 'Schneider LRD10 (4 - 6 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 5 },
-        { id: 'LRD12', name: 'Schneider LRD12 (5.5 - 8 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 7 },
-        { id: 'LRD14', name: 'Schneider LRD14 (7 - 10 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 9 },
-        { id: 'LRD16', name: 'Schneider LRD16 (9 - 13 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 11 },
-        { id: 'LRD21', name: 'Schneider LRD21 (12 - 18 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 15 },
-        { id: 'LRD22', name: 'Schneider LRD22 (16 - 24 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 20 },
-        { id: 'LRD32', name: 'Schneider LRD32 (23 - 32 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 28 },
-        { id: 'LRD35', name: 'Schneider LRD35 (30 - 38 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 35 },
-        { id: 'LRD3361', name: 'Schneider LRD3361 (55 - 70 A) - Thermal', type: 'thermal', defaultClass: 10, defaultIr: 63 },
-        { id: 'LRE16', name: 'Schneider EasyPact LRE16 (9 - 13 A)', type: 'thermal', defaultClass: 10, defaultIr: 11 },
-        { id: 'LR9D', name: 'Schneider TeSys LR9D (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 25 },
-        { id: 'LR9F', name: 'Schneider TeSys LR9F (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 80 },
-        { id: 'LR9G', name: 'Schneider TeSys Deca LR9G (Electronic)', type: 'electronic', defaultClass: 10, defaultIr: 100 }
+        { id: 'LRD08',   name: 'Schneider LRD08 (2.5 - 4.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 3.5 },
+        { id: 'LRD10',   name: 'Schneider LRD10 (4.0 - 6.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 5.0 },
+        { id: 'LRD12',   name: 'Schneider LRD12 (5.5 - 8.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 7.0 },
+        { id: 'LRD14',   name: 'Schneider LRD14 (7.0 - 10.0 A)',  profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 9.0 },
+        { id: 'LRD16',   name: 'Schneider LRD16 (9.0 - 13.0 A)',  profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
+        { id: 'LRD21',   name: 'Schneider LRD21 (12.0 - 18.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 15.0 },
+        { id: 'LRD22',   name: 'Schneider LRD22 (16.0 - 24.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 20.0 },
+        { id: 'LRD32',   name: 'Schneider LRD32 (23.0 - 32.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
+        { id: 'LRD35',   name: 'Schneider LRD35 (30.0 - 38.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 35.0 },
+        { id: 'LRD3361', name: 'Schneider LRD3361 (55.0 - 70.0 A)', profile: 'SCH_LRD_LARGE', allowedClasses: [10], defaultClass: 10, defaultIr: 63.0 },
+        { id: 'LRE16',   name: 'Schneider EasyPact LRE (9 - 13 A)', profile: 'SCH_LRE', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
+        { id: 'LR9D',    name: 'Schneider TeSys LR9D (Electronic)', profile: 'SCH_LR9', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 25.0 },
+        { id: 'LR9F',    name: 'Schneider TeSys LR9F (Electronic)', profile: 'SCH_LR9', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 80.0 },
+        { id: 'LR9G',    name: 'Schneider TeSys LR9G (Electronic)', profile: 'SCH_LR9G', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 100.0 }
       ]
     };
 
-    // ==================== 2. منحنيات الفصل من داتاشيت المصنع ====================
-    const DATASHEET_CURVES = {
-      10: {
-        cold: {
-          1.2: { min: 180, typ: 360, max: 720 },
-          1.5: { min: 60,  typ: 90,  max: 150 },
-          2.0: { min: 15,  typ: 24,  max: 35 },
-          3.0: { min: 5.0, typ: 8.0, max: 12.0 },
-          4.0: { min: 2.8, typ: 4.5, max: 7.0 },
-          5.0: { min: 1.8, typ: 3.0, max: 4.8 },
-          6.0: { min: 1.3, typ: 2.2, max: 3.5 },
-          7.2: { min: 1.0, typ: 1.6, max: 2.8 }
+    // دالة مساعدة لتوليد نقاط الكيرف الكامل (Cold & Hot, 3P & 2P) بدقة من نقاط جدول رسمة المصنع (±20%)
+    function buildThermalProfile(t3_3p, t6_3p, t72_3p, t3_2p, t6_2p, t72_2p, t2_3p, t15_3p, t2_2p, t15_2p) {
+      const tol = (v, pct) => ({
+        min: +(v * (1 - pct)).toFixed(1),
+        typ: +v.toFixed(1),
+        max: +(v * (1 + pct)).toFixed(1)
+      });
+      const hotScale = 0.32; // نسبة الزمن الساخن إلى البارد من منحنيات التسخين المسبق 100%
+      return {
+        10: {
+          cold3: {
+            1.2: tol(t15_3p * 2.5, 0.25),
+            1.5: tol(t15_3p, 0.22),
+            2.0: tol(t2_3p, 0.20),
+            3.0: tol(t3_3p, 0.20),
+            4.0: tol((t3_3p * 0.56), 0.20),
+            5.0: tol((t6_3p * 1.28), 0.20),
+            6.0: tol(t6_3p, 0.20),
+            7.2: tol(t72_3p, 0.20)
+          },
+          hot3: {
+            1.2: tol(t15_3p * 2.5 * 0.28, 0.25),
+            1.5: tol(t15_3p * 0.30, 0.22),
+            2.0: tol(t2_3p * hotScale, 0.20),
+            3.0: tol(t3_3p * hotScale, 0.20),
+            4.0: tol(t3_3p * 0.56 * hotScale, 0.20),
+            5.0: tol(t6_3p * 1.28 * hotScale, 0.20),
+            6.0: tol(t6_3p * hotScale, 0.20),
+            7.2: tol(t72_3p * hotScale, 0.20)
+          },
+          cold2: {
+            1.2: tol(t15_2p * 2.4, 0.25),
+            1.5: tol(t15_2p, 0.22),
+            2.0: tol(t2_2p, 0.20),
+            3.0: tol(t3_2p, 0.20),
+            4.0: tol(t3_2p * 0.57, 0.20),
+            5.0: tol(t6_2p * 1.28, 0.20),
+            6.0: tol(t6_2p, 0.20),
+            7.2: tol(t72_2p, 0.20)
+          },
+          hot2: {
+            1.2: tol(t15_2p * 2.4 * 0.28, 0.25),
+            1.5: tol(t15_2p * 0.30, 0.22),
+            2.0: tol(t2_2p * hotScale, 0.20),
+            3.0: tol(t3_2p * hotScale, 0.20),
+            4.0: tol(t3_2p * 0.57 * hotScale, 0.20),
+            5.0: tol(t6_2p * 1.28 * hotScale, 0.20),
+            6.0: tol(t6_2p * hotScale, 0.20),
+            7.2: tol(t72_2p * hotScale, 0.20)
+          }
+        }
+      };
+    }
+
+    // ==================== 2. منحنيات الفصل الدقيقة من رسومات المصنع المرفقة ====================
+    const MODEL_PROFILES = {
+      // TA25DU الرينجات المستخرجة من ملفاتك المرفقة
+      TA25_016: buildThermalProfile(17.3, 5.6, 4.5, 12.9, 4.2, 3.3, 49.0, 130.0, 34.0, 92.0),
+      TA25_31:  buildThermalProfile(18.3, 6.0, 4.7, 13.6, 4.7, 3.6, 52.0, 138.0, 36.0, 96.0),
+      TA25_40:  buildThermalProfile(18.8, 6.1, 4.7, 14.1, 4.7, 3.6, 54.0, 142.0, 37.5, 99.0),
+      TA25_85:  buildThermalProfile(17.8, 6.1, 5.0, 13.4, 4.8, 3.8, 51.0, 135.0, 35.5, 95.0),
+      TA25_110: buildThermalProfile(18.8, 6.5, 5.1, 15.0, 5.0, 4.0, 54.0, 145.0, 39.0, 102.0),
+      TA25_140: buildThermalProfile(17.8, 6.0, 4.7, 13.8, 4.7, 3.7, 51.0, 135.0, 36.5, 96.0),
+      TA25_250: buildThermalProfile(22.4, 6.8, 5.0, 16.8, 5.1, 3.9, 63.0, 162.0, 44.0, 115.0),
+
+      // TA42DU / TA75DU / TA80DU الرينجات المستخرجة من ملفاتك المرفقة
+      TA42_250: buildThermalProfile(41.0, 11.8, 9.0, 30.6, 8.4, 6.6, 105.0, 250.0, 76.0, 180.0),
+      TA42_320: buildThermalProfile(37.0, 10.6, 8.0, 24.8, 7.8, 6.1, 95.0,  230.0, 64.0, 160.0),
+      TA75_420: buildThermalProfile(34.0, 9.5,  6.8, 26.1, 7.5, 5.6, 88.0,  210.0, 67.0, 155.0),
+      TA75_520: buildThermalProfile(43.0, 11.8, 9.0, 35.8, 9.0, 6.9, 110.0, 260.0, 88.0, 195.0),
+      TA75_630: buildThermalProfile(37.4, 10.6, 7.6, 30.3, 8.7, 6.9, 96.0,  235.0, 76.0, 175.0),
+      TA75_800: buildThermalProfile(46.7, 11.5, 7.9, 29.3, 7.8, 5.8, 118.0, 275.0, 74.0, 170.0),
+
+      // TF42 / TF65 / TF96 من رسومات ABB الرسمية
+      TF42_S:   buildThermalProfile(19.0, 6.8, 5.4, 15.1, 5.2, 4.1, 54.0, 140.0, 40.0, 100.0),
+      TF42_M:   buildThermalProfile(19.9, 6.2, 4.6, 16.4, 5.3, 3.9, 56.0, 145.0, 43.0, 105.0),
+      TF42_L:   buildThermalProfile(21.2, 6.8, 5.1, 17.7, 6.0, 4.7, 60.0, 155.0, 46.0, 112.0),
+      TF65_M:   buildThermalProfile(33.6, 9.8, 7.1, 25.7, 7.7, 5.6, 86.0, 205.0, 66.0, 150.0),
+      TF65_L:   buildThermalProfile(31.9, 8.2, 5.6, 22.3, 6.3, 4.3, 82.0, 195.0, 58.0, 140.0),
+      TF96_M:   buildThermalProfile(27.3, 8.5, 6.3, 21.4, 6.8, 5.0, 72.0, 180.0, 55.0, 130.0),
+      TF96_L:   buildThermalProfile(36.5, 10.0, 6.9, 29.7, 8.4, 6.1, 94.0, 225.0, 75.0, 170.0),
+
+      // Schneider LRD / LRE
+      SCH_LRD_SMALL: buildThermalProfile(9.5, 3.0, 2.4, 6.5, 2.0, 1.6, 24.0, 75.0, 15.0, 40.0),
+      SCH_LRD_LARGE: buildThermalProfile(11.0, 3.5, 2.8, 7.5, 2.3, 1.9, 28.0, 85.0, 17.5, 46.0),
+      SCH_LRE:       buildThermalProfile(10.2, 3.2, 2.6, 7.0, 2.2, 1.7, 26.0, 80.0, 16.0, 43.0),
+
+      // 8. كيرف الأوفرلود الإلكتروني ABB EF19 / EF45 / EF65 / EF96 / EF146
+      ABB_EF: {
+        10: {
+          cold3: {
+            1.2: { min: 220, typ: 280, max: 350 },
+            1.5: { min: 75,  typ: 92,  max: 110 },
+            2.0: { min: 27,  typ: 32,  max: 37 },
+            3.0: { min: 10.5, typ: 12.5, max: 14.5 },
+            4.0: { min: 6.0, typ: 7.2, max: 8.4 },
+            5.0: { min: 4.0, typ: 4.8, max: 5.6 },
+            6.0: { min: 3.0, typ: 3.6, max: 4.2 },
+            7.2: { min: 2.3, typ: 2.8, max: 3.3 }
+          },
+          hot3: {
+            1.2: { min: 65,  typ: 90,  max: 115 },
+            1.5: { min: 24,  typ: 30,  max: 38 },
+            2.0: { min: 8.5, typ: 11,  max: 13.5 },
+            3.0: { min: 3.2, typ: 4.2, max: 5.2 },
+            4.0: { min: 1.9, typ: 2.4, max: 3.0 },
+            5.0: { min: 1.3, typ: 1.6, max: 2.0 },
+            6.0: { min: 1.0, typ: 1.2, max: 1.5 },
+            7.2: { min: 0.75, typ: 0.95, max: 1.2 }
+          },
+          cold2: {
+            1.2: { min: 140, typ: 180, max: 225 },
+            1.5: { min: 50,  typ: 64,  max: 78 },
+            2.0: { min: 19,  typ: 23,  max: 27 },
+            3.0: { min: 7.5, typ: 9.2, max: 11 },
+            4.0: { min: 4.3, typ: 5.3, max: 6.3 },
+            5.0: { min: 2.9, typ: 3.5, max: 4.2 },
+            6.0: { min: 2.2, typ: 2.6, max: 3.1 },
+            7.2: { min: 1.7, typ: 2.0, max: 2.4 }
+          },
+          hot2: {
+            1.2: { min: 45,  typ: 60,  max: 78 },
+            1.5: { min: 16,  typ: 21,  max: 26 },
+            2.0: { min: 6.0, typ: 7.8, max: 9.6 },
+            3.0: { min: 2.3, typ: 3.0, max: 3.7 },
+            4.0: { min: 1.3, typ: 1.7, max: 2.1 },
+            5.0: { min: 0.9, typ: 1.15, max: 1.4 },
+            6.0: { min: 0.7, typ: 0.85, max: 1.1 },
+            7.2: { min: 0.55, typ: 0.7, max: 0.85 }
+          }
         },
-        hot: {
-          1.2: { min: 45,  typ: 110, max: 240 },
-          1.5: { min: 20,  typ: 35,  max: 60 },
-          2.0: { min: 5.0, typ: 8.0, max: 12.0 },
-          3.0: { min: 1.8, typ: 3.0, max: 4.5 },
-          4.0: { min: 1.0, typ: 1.8, max: 2.8 },
-          5.0: { min: 0.7, typ: 1.2, max: 2.0 },
-          6.0: { min: 0.5, typ: 0.9, max: 1.5 },
-          7.2: { min: 0.4, typ: 0.7, max: 1.2 }
+        20: {
+          cold3: {
+            1.2: { min: 420, typ: 540, max: 680 },
+            1.5: { min: 150, typ: 185, max: 220 },
+            2.0: { min: 54,  typ: 64,  max: 74 },
+            3.0: { min: 21,  typ: 25,  max: 29 },
+            4.0: { min: 12,  typ: 14.4, max: 16.8 },
+            5.0: { min: 8.0, typ: 9.6, max: 11.2 },
+            6.0: { min: 6.0, typ: 7.2, max: 8.4 },
+            7.2: { min: 4.6, typ: 5.6, max: 6.6 }
+          },
+          hot3: {
+            1.2: { min: 130, typ: 180, max: 230 },
+            1.5: { min: 48,  typ: 60,  max: 76 },
+            2.0: { min: 17,  typ: 22,  max: 27 },
+            3.0: { min: 6.4, typ: 8.4, max: 10.4 },
+            4.0: { min: 3.8, typ: 4.8, max: 6.0 },
+            5.0: { min: 2.6, typ: 3.2, max: 4.0 },
+            6.0: { min: 2.0, typ: 2.4, max: 3.0 },
+            7.2: { min: 1.5, typ: 1.9, max: 2.4 }
+          },
+          cold2: {
+            1.2: { min: 280, typ: 360, max: 450 },
+            1.5: { min: 100, typ: 128, max: 156 },
+            2.0: { min: 38,  typ: 46,  max: 54 },
+            3.0: { min: 15,  typ: 18.4, max: 22 },
+            4.0: { min: 8.6, typ: 10.6, max: 12.6 },
+            5.0: { min: 5.8, typ: 7.0, max: 8.4 },
+            6.0: { min: 4.4, typ: 5.2, max: 6.2 },
+            7.2: { min: 3.4, typ: 4.0, max: 4.8 }
+          },
+          hot2: {
+            1.2: { min: 90,  typ: 120, max: 156 },
+            1.5: { min: 32,  typ: 42,  max: 52 },
+            2.0: { min: 12,  typ: 15.6, max: 19.2 },
+            3.0: { min: 4.6, typ: 6.0, max: 7.4 },
+            4.0: { min: 2.6, typ: 3.4, max: 4.2 },
+            5.0: { min: 1.8, typ: 2.3, max: 2.8 },
+            6.0: { min: 1.4, typ: 1.7, max: 2.2 },
+            7.2: { min: 1.1, typ: 1.4, max: 1.7 }
+          }
+        },
+        30: {
+          cold3: {
+            1.2: { min: 630, typ: 810, max: 1020 },
+            1.5: { min: 225, typ: 275, max: 330 },
+            2.0: { min: 81,  typ: 96,  max: 111 },
+            3.0: { min: 31.5, typ: 37.5, max: 43.5 },
+            4.0: { min: 18,  typ: 21.6, max: 25.2 },
+            5.0: { min: 12,  typ: 14.4, max: 16.8 },
+            6.0: { min: 9.0, typ: 10.8, max: 12.6 },
+            7.2: { min: 6.9, typ: 8.4, max: 9.9 }
+          },
+          hot3: {
+            1.2: { min: 195, typ: 270, max: 345 },
+            1.5: { min: 72,  typ: 90,  max: 114 },
+            2.0: { min: 25.5, typ: 33, max: 40.5 },
+            3.0: { min: 9.6, typ: 12.6, max: 15.6 },
+            4.0: { min: 5.7, typ: 7.2, max: 9.0 },
+            5.0: { min: 3.9, typ: 4.8, max: 6.0 },
+            6.0: { min: 3.0, typ: 3.6, max: 4.5 },
+            7.2: { min: 2.25, typ: 2.85, max: 3.6 }
+          },
+          cold2: {
+            1.2: { min: 420, typ: 540, max: 675 },
+            1.5: { min: 150, typ: 192, max: 234 },
+            2.0: { min: 57,  typ: 69,  max: 81 },
+            3.0: { min: 22.5, typ: 27.6, max: 33 },
+            4.0: { min: 12.9, typ: 15.9, max: 18.9 },
+            5.0: { min: 8.7, typ: 10.5, max: 12.6 },
+            6.0: { min: 6.6, typ: 7.8, max: 9.3 },
+            7.2: { min: 5.1, typ: 6.0, max: 7.2 }
+          },
+          hot2: {
+            1.2: { min: 135, typ: 180, max: 234 },
+            1.5: { min: 48,  typ: 63,  max: 78 },
+            2.0: { min: 18,  typ: 23.4, max: 28.8 },
+            3.0: { min: 6.9, typ: 9.0, max: 11.1 },
+            4.0: { min: 3.9, typ: 5.1, max: 6.3 },
+            5.0: { min: 2.7, typ: 3.45, max: 4.2 },
+            6.0: { min: 2.1, typ: 2.55, max: 3.3 },
+            7.2: { min: 1.65, typ: 2.1, max: 2.55 }
+          }
         }
       },
-      20: {
-        cold: {
-          1.2: { min: 320, typ: 650, max: 1200 },
-          1.5: { min: 100, typ: 165, max: 260 },
-          2.0: { min: 30,  typ: 48,  max: 70 },
-          3.0: { min: 10,  typ: 16,  max: 24 },
-          4.0: { min: 5.5, typ: 9.0, max: 14 },
-          5.0: { min: 3.6, typ: 6.0, max: 9.6 },
-          6.0: { min: 2.6, typ: 4.4, max: 7.0 },
-          7.2: { min: 2.0, typ: 3.2, max: 5.5 }
+
+      // كيرف الأوفرلود الإلكتروني Schneider TeSys LR9D / LR9F
+      SCH_LR9: {
+        10: {
+          cold3: {
+            1.2: { min: 210, typ: 270, max: 340 },
+            1.5: { min: 70,  typ: 88,  max: 108 },
+            2.0: { min: 25,  typ: 30,  max: 36 },
+            3.0: { min: 9.5, typ: 11.5, max: 14 },
+            4.0: { min: 5.5, typ: 6.8, max: 8.2 },
+            5.0: { min: 3.8, typ: 4.6, max: 5.5 },
+            6.0: { min: 2.8, typ: 3.4, max: 4.1 },
+            7.2: { min: 2.2, typ: 2.7, max: 3.2 }
+          },
+          hot3: {
+            1.2: { min: 60,  typ: 85,  max: 110 },
+            1.5: { min: 22,  typ: 28,  max: 35 },
+            2.0: { min: 8.0, typ: 10,  max: 12.5 },
+            3.0: { min: 3.0, typ: 3.8, max: 4.8 },
+            4.0: { min: 1.8, typ: 2.2, max: 2.8 },
+            5.0: { min: 1.2, typ: 1.5, max: 1.9 },
+            6.0: { min: 0.9, typ: 1.1, max: 1.4 },
+            7.2: { min: 0.7, typ: 0.9, max: 1.1 }
+          },
+          cold2: {
+            1.2: { min: 130, typ: 170, max: 215 },
+            1.5: { min: 46,  typ: 58,  max: 72 },
+            2.0: { min: 17,  typ: 21,  max: 25 },
+            3.0: { min: 6.8, typ: 8.4, max: 10.2 },
+            4.0: { min: 4.0, typ: 4.9, max: 6.0 },
+            5.0: { min: 2.7, typ: 3.3, max: 4.0 },
+            6.0: { min: 2.0, typ: 2.5, max: 3.0 },
+            7.2: { min: 1.6, typ: 1.9, max: 2.3 }
+          },
+          hot2: {
+            1.2: { min: 40,  typ: 55,  max: 72 },
+            1.5: { min: 15,  typ: 19,  max: 24 },
+            2.0: { min: 5.5, typ: 7.0, max: 8.8 },
+            3.0: { min: 2.1, typ: 2.7, max: 3.4 },
+            4.0: { min: 1.2, typ: 1.5, max: 1.9 },
+            5.0: { min: 0.85, typ: 1.05, max: 1.3 },
+            6.0: { min: 0.65, typ: 0.8, max: 1.0 },
+            7.2: { min: 0.5, typ: 0.65, max: 0.8 }
+          }
         },
-        hot: {
-          1.2: { min: 85,  typ: 200, max: 420 },
-          1.5: { min: 35,  typ: 62,  max: 105 },
-          2.0: { min: 10,  typ: 16,  max: 24 },
-          3.0: { min: 3.5, typ: 6.0, max: 9.0 },
-          4.0: { min: 2.0, typ: 3.5, max: 5.5 },
-          5.0: { min: 1.4, typ: 2.4, max: 4.0 },
-          6.0: { min: 1.0, typ: 1.8, max: 3.0 },
-          7.2: { min: 0.8, typ: 1.4, max: 2.4 }
-        }
-      },
-      30: {
-        cold: {
-          1.2: { min: 480, typ: 950, max: 1800 },
-          1.5: { min: 150, typ: 240, max: 380 },
-          2.0: { min: 45,  typ: 72,  max: 105 },
-          3.0: { min: 15,  typ: 24,  max: 36 },
-          4.0: { min: 8.2, typ: 13.5, max: 21 },
-          5.0: { min: 5.4, typ: 9.0, max: 14.4 },
-          6.0: { min: 3.9, typ: 6.6, max: 10.5 },
-          7.2: { min: 3.0, typ: 4.8, max: 8.2 }
-        },
-        hot: {
-          1.2: { min: 120, typ: 290, max: 600 },
-          1.5: { min: 50,  typ: 90,  max: 150 },
-          2.0: { min: 15,  typ: 24,  max: 36 },
-          3.0: { min: 5.0, typ: 9.0, max: 13.5 },
-          4.0: { min: 3.0, typ: 5.2, max: 8.2 },
-          5.0: { min: 2.1, typ: 3.6, max: 6.0 },
-          6.0: { min: 1.5, typ: 2.7, max: 4.5 },
-          7.2: { min: 1.2, typ: 2.1, max: 3.6 }
+        20: {
+          cold3: {
+            1.2: { min: 400, typ: 520, max: 650 },
+            1.5: { min: 140, typ: 175, max: 215 },
+            2.0: { min: 50,  typ: 60,  max: 72 },
+            3.0: { min: 19,  typ: 23,  max: 28 },
+            4.0: { min: 11,  typ: 13.5, max: 16.5 },
+            5.0: { min: 7.5, typ: 9.2, max: 11 },
+            6.0: { min: 5.6, typ: 6.8, max: 8.2 },
+            7.2: { min: 4.4, typ: 5.4, max: 6.4 }
+          },
+          hot3: {
+            1.2: { min: 120, typ: 170, max: 220 },
+            1.5: { min: 44,  typ: 56,  max: 70 },
+            2.0: { min: 16,  typ: 20,  max: 25 },
+            3.0: { min: 6.0, typ: 7.6, max: 9.6 },
+            4.0: { min: 3.5, typ: 4.4, max: 5.6 },
+            5.0: { min: 2.4, typ: 3.0, max: 3.8 },
+            6.0: { min: 1.8, typ: 2.2, max: 2.8 },
+            7.2: { min: 1.4, typ: 1.8, max: 2.2 }
+          },
+          cold2: {
+            1.2: { min: 260, typ: 340, max: 430 },
+            1.5: { min: 92,  typ: 116, max: 144 },
+            2.0: { min: 34,  typ: 42,  max: 50 },
+            3.0: { min: 13.5, typ: 16.8, max: 20.4 },
+            4.0: { min: 8.0, typ: 9.8, max: 12 },
+            5.0: { min: 5.4, typ: 6.6, max: 8.0 },
+            6.0: { min: 4.0, typ: 5.0, max: 6.0 },
+            7.2: { min: 3.2, typ: 3.8, max: 4.6 }
+          },
+          hot2: {
+            1.2: { min: 80,  typ: 110, max: 144 },
+            1.5: { min: 30,  typ: 38,  max: 48 },
+            2.0: { min: 11,  typ: 14,  max: 17.5 },
+            3.0: { min: 4.2, typ: 5.4, max: 6.8 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.8 },
+            5.0: { min: 1.7, typ: 2.1, max: 2.6 },
+            6.0: { min: 1.3, typ: 1.6, max: 2.0 },
+            7.2: { min: 1.0, typ: 1.3, max: 1.6 }
+          }
         }
       }
+    };
+
+    MODEL_PROFILES.SCH_LR9G = {
+      10: MODEL_PROFILES.SCH_LR9[10],
+      20: MODEL_PROFILES.SCH_LR9[20],
+      30: MODEL_PROFILES.ABB_EF[30]
     };
 
     const appState = {
       lang: 'ar',
       brand: 'ABB',
-      modelId: 'TF42',
-      relayType: 'thermal',
+      modelId: 'TA25DU-25M',
+      profileKey: 'TA25_250',
+      allowedClasses: [10],
       tripClass: 10,
       thermalState: 'cold',
       poles: 3,
-      ir: 10,
+      ir: 22,
       mult: 2.0,
       logs: []
     };
 
     let tccChartInstance = null;
+
+    // ==================== متغيرات ودوال التايمر (Stopwatch) ====================
+    let swInterval = null;
+    let swStartTime = 0;
+    let swElapsedMs = 0;
+    let swRunning = false;
+
+    function toggleStopwatch() {
+      const btn = document.getElementById('btnStopwatchToggle');
+      const isAr = appState.lang === 'ar';
+
+      if (!swRunning) {
+        // بدء العد
+        swRunning = true;
+        swStartTime = performance.now() - swElapsedMs;
+        btn.className = 'bg-red-600 hover:bg-red-500 text-white font-black text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer flex items-center gap-1';
+        btn.innerHTML = `<span>⏹</span> <span id="lblSwStart">${isAr ? 'إيقاف' : 'Stop'}</span>`;
+
+        swInterval = setInterval(() => {
+          swElapsedMs = performance.now() - swStartTime;
+          const sec = (swElapsedMs / 1000).toFixed(1);
+          document.getElementById('stopwatchDisplay').textContent = sec + ' s';
+        }, 100);
+      } else {
+        // إيقاف العد ونسخ القيمة تلقائياً لخانة الزمن الفعلي
+        swRunning = false;
+        clearInterval(swInterval);
+        const finalSec = (swElapsedMs / 1000).toFixed(1);
+        document.getElementById('stopwatchDisplay').textContent = finalSec + ' s';
+        document.getElementById('measuredTimeInput').value = finalSec;
+        btn.className = 'bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer flex items-center gap-1';
+        btn.innerHTML = `<span>▶</span> <span id="lblSwStart">${isAr ? 'استكمال' : 'Resume'}</span>`;
+        evaluateTime();
+      }
+    }
+
+    function resetStopwatch() {
+      swRunning = false;
+      clearInterval(swInterval);
+      swElapsedMs = 0;
+      const isAr = appState.lang === 'ar';
+      document.getElementById('stopwatchDisplay').textContent = '0.0 s';
+      const btn = document.getElementById('btnStopwatchToggle');
+      btn.className = 'bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs px-3.5 py-2 rounded-xl shadow cursor-pointer flex items-center gap-1';
+      btn.innerHTML = `<span>▶</span> <span id="lblSwStart">${isAr ? 'بدء' : 'Start'}</span>`;
+    }
 
     function populateModels() {
       const select = document.getElementById('modelSelect');
@@ -448,10 +816,37 @@
         opt.textContent = m.name;
         select.appendChild(opt);
       });
-      appState.modelId = list[0].id;
-      appState.relayType = list[0].type;
-      document.getElementById('irInput').value = list[0].defaultIr;
-      appState.ir = list[0].defaultIr;
+      applyModelData(list[0]);
+    }
+
+    function applyModelData(modelObj) {
+      appState.modelId = modelObj.id;
+      appState.profileKey = modelObj.profile;
+      appState.allowedClasses = modelObj.allowedClasses;
+      document.getElementById('irInput').value = modelObj.defaultIr;
+      appState.ir = modelObj.defaultIr;
+
+      // إذا كان الموديل حراري يدعم Class 10 فقط، نقفل الأزرار الأخرى تلقائياً لمنع اختيار كيرف خاطئ
+      if (!appState.allowedClasses.includes(appState.tripClass)) {
+        appState.tripClass = appState.allowedClasses[0];
+      }
+      updateClassButtonsUI();
+    }
+
+    function updateClassButtonsUI() {
+      [10, 20, 30].forEach(cls => {
+        const btn = document.getElementById('cls' + cls);
+        const allowed = appState.allowedClasses.includes(cls);
+        btn.disabled = !allowed;
+        if (!allowed) {
+          btn.className = 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-200 text-slate-400 border cursor-not-allowed opacity-50';
+        } else if (cls === appState.tripClass) {
+          btn.className = 'py-1.5 rounded-lg font-extrabold text-xs bg-blue-700 text-white shadow-sm cursor-pointer';
+        } else {
+          btn.className = 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border cursor-pointer';
+        }
+      });
+      document.getElementById('chartBadge').textContent = `Class ${appState.tripClass}`;
     }
 
     function selectBrand(b) {
@@ -470,22 +865,15 @@
       const selId = document.getElementById('modelSelect').value;
       const found = RELAY_MODELS[appState.brand].find(m => m.id === selId);
       if (found) {
-        appState.modelId = found.id;
-        appState.relayType = found.type;
-        document.getElementById('irInput').value = found.defaultIr;
-        appState.ir = found.defaultIr;
+        applyModelData(found);
       }
       calculateAll();
     }
 
     function setClass(c) {
+      if (!appState.allowedClasses.includes(c)) return;
       appState.tripClass = c;
-      [10, 20, 30].forEach(cls => {
-        document.getElementById('cls' + cls).className = (cls === c)
-          ? 'py-1.5 rounded-lg font-extrabold text-xs bg-blue-700 text-white shadow-sm cursor-pointer'
-          : 'py-1.5 rounded-lg font-extrabold text-xs bg-slate-100 text-slate-700 border cursor-pointer';
-      });
-      document.getElementById('chartBadge').textContent = 'Class ' + c;
+      updateClassButtonsUI();
       calculateAll();
     }
 
@@ -523,25 +911,14 @@
       calculateAll();
     }
 
-    function getTripWindow(cls, thermalState, mult, poles, relayType) {
-      const table = DATASHEET_CURVES[cls][thermalState];
-      const base = table[mult] || table[2.0];
-      let min = base.min;
-      let typ = base.typ;
-      let max = base.max;
+    function getTripWindow(cls, thermalState, mult, poles, profileKey) {
+      const prof = MODEL_PROFILES[profileKey] || MODEL_PROFILES.TA25_250;
+      const classData = prof[cls] || prof[10];
+      const curveKey = thermalState + (poles === 2 ? '2' : '3'); // cold3, hot3, cold2, hot2
+      const curveTable = classData[curveKey] || classData.cold3;
+      const pt = curveTable[mult] || curveTable[2.0];
 
-      if (relayType === 'electronic') {
-        min = +(typ * 0.82).toFixed(1);
-        max = +(typ * 1.18).toFixed(1);
-      }
-
-      if (poles === 2) {
-        min = +(min * 0.72).toFixed(1);
-        typ = +(typ * 0.75).toFixed(1);
-        max = +(max * 0.78).toFixed(1);
-      }
-
-      return { min, typ, max };
+      return { min: pt.min, typ: pt.typ, max: pt.max };
     }
 
     function calculateAll() {
@@ -550,7 +927,7 @@
       const injectA = (irVal * appState.mult).toFixed(2);
       document.getElementById('valInjectA').textContent = injectA + ' A';
 
-      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.relayType);
+      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.profileKey);
       document.getElementById('valRange').textContent = `${win.min}s - ${win.max}s`;
       document.getElementById('valTyp').textContent = `${win.typ} s`;
 
@@ -570,18 +947,18 @@
         title.className = 'text-sm font-black text-slate-700';
         title.textContent = isAr ? 'أدخل زمن الفصل بالثواني لإظهار النتيجة' : 'Enter measured trip time (sec) to see verdict';
         sub.className = 'text-[11px] font-bold text-slate-500 mt-0.5';
-        sub.textContent = isAr ? 'يتم التقييم فوراً طبقاً لمنحنيات داتاشيت المصنع' : 'Evaluated directly against manufacturer datasheet curves';
+        sub.textContent = isAr ? 'يتم التقييم فوراً طبقاً لمنحنى الموديل المختار' : 'Evaluated directly against selected model curve';
         updateChart();
         return;
       }
 
       const t = parseFloat(raw);
-      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.relayType);
+      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.profileKey);
 
       if (t >= win.min && t <= win.max) {
         box.className = 'rounded-xl p-2.5 text-center bg-emerald-100 border-2 border-emerald-600';
         title.className = 'text-base font-black text-emerald-950';
-        title.textContent = isAr ? '✅ ناجح (PASS) - زمن الفصل مطابق للداتاشيت' : '✅ PASS - Trip Time Within Datasheet Curve';
+        title.textContent = isAr ? '✅ ناجح (PASS) - زمن الفصل سليم ومطابق للكيرف' : '✅ PASS - Trip Time Within Curve';
         sub.className = 'text-xs font-extrabold text-emerald-800 mt-0.5';
         sub.textContent = isAr
           ? `الزمن المسجل (${t}s) داخل النطاق المسموح (${win.min}s إلى ${win.max}s)`
@@ -589,7 +966,7 @@
       } else if (t < win.min) {
         box.className = 'rounded-xl p-2.5 text-center bg-red-100 border-2 border-red-600';
         title.className = 'text-base font-black text-red-950';
-        title.textContent = isAr ? '❌ راسب (FAIL) - فصل مبكر أسرع من المسموح' : '❌ FAIL - Tripped Too Fast (Early Trip)';
+        title.textContent = isAr ? '❌ راسب (FAIL) - فصل مبكر أسرع من الكيرف' : '❌ FAIL - Tripped Too Fast (Early Trip)';
         sub.className = 'text-xs font-extrabold text-red-800 mt-0.5';
         sub.textContent = isAr
           ? `الزمن (${t}s) أقل من الحد الأدنى المسموح (${win.min}s)`
@@ -597,7 +974,7 @@
       } else {
         box.className = 'rounded-xl p-2.5 text-center bg-red-100 border-2 border-red-600';
         title.className = 'text-base font-black text-red-950';
-        title.textContent = isAr ? '❌ راسب (FAIL) - فصل متأخر أبطأ من المسموح' : '❌ FAIL - Tripped Too Slow (Delayed Trip)';
+        title.textContent = isAr ? '❌ راسب (FAIL) - فصل متأخر أبطأ من الكيرف' : '❌ FAIL - Tripped Too Slow (Delayed Trip)';
         sub.className = 'text-xs font-extrabold text-red-800 mt-0.5';
         sub.textContent = isAr
           ? `الزمن (${t}s) تجاوز الحد الأقصى المسموح (${win.max}s)`
@@ -610,13 +987,13 @@
       const raw = document.getElementById('measuredTimeInput').value;
       if (raw === '' || isNaN(parseFloat(raw))) return;
       const t = parseFloat(raw);
-      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.relayType);
+      const win = getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.profileKey);
       const pass = (t >= win.min && t <= win.max);
 
       appState.logs.unshift({
         model: appState.modelId,
         injectA: (appState.ir * appState.mult).toFixed(1) + 'A (' + (appState.mult * 100) + '%)',
-        st: appState.thermalState === 'cold' ? (appState.lang === 'ar' ? 'بارد' : 'Cold') : (appState.lang === 'ar' ? 'ساخن' : 'Hot'),
+        st: (appState.thermalState === 'cold' ? (appState.lang === 'ar' ? 'بارد' : 'Cold') : (appState.lang === 'ar' ? 'ساخن' : 'Hot')) + ` (${appState.poles}P)`,
         time: t + 's',
         pass
       });
@@ -679,7 +1056,7 @@
       const maxPts = [];
 
       mults.forEach(m => {
-        const w = getTripWindow(appState.tripClass, appState.thermalState, m, appState.poles, appState.relayType);
+        const w = getTripWindow(appState.tripClass, appState.thermalState, m, appState.poles, appState.profileKey);
         minPts.push({ x: m, y: w.min });
         typPts.push({ x: m, y: w.typ });
         maxPts.push({ x: m, y: w.max });
@@ -688,7 +1065,7 @@
       const rawTime = parseFloat(document.getElementById('measuredTimeInput').value);
       const userPt = (!isNaN(rawTime) && rawTime > 0)
         ? [{ x: appState.mult, y: rawTime }]
-        : [{ x: appState.mult, y: getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.relayType).typ }];
+        : [{ x: appState.mult, y: getTripWindow(appState.tripClass, appState.thermalState, appState.mult, appState.poles, appState.profileKey).typ }];
 
       if (tccChartInstance) {
         tccChartInstance.destroy();
@@ -803,7 +1180,11 @@
       document.getElementById('lblAllowedBox').textContent = isAr ? 'الزمن المسموح' : 'Allowed Time';
       document.getElementById('lblTypBox').textContent = isAr ? 'الزمن المثالي' : 'Typical Time';
 
-      document.getElementById('lblActualTime').textContent = isAr ? '⏱️ اكتب زمن الفصل الفعلي (بالثواني):' : '⏱️ Enter Measured Trip Time (s):';
+      document.getElementById('lblStopwatchTitle').textContent = isAr ? 'ساعة إيقاف الاختبار (Stopwatch)' : 'Test Stopwatch Timer';
+      document.getElementById('lblSwStart').textContent = swRunning ? (isAr ? 'إيقاف' : 'Stop') : (swElapsedMs > 0 ? (isAr ? 'استكمال' : 'Resume') : (isAr ? 'بدء' : 'Start'));
+      document.getElementById('lblSwReset').textContent = isAr ? 'تصفير' : 'Reset';
+
+      document.getElementById('lblActualTime').textContent = isAr ? '✍️ أو اكتب زمن الفصل الفعلي (بالثواني):' : '✍️ Or Enter Measured Trip Time (s):';
       document.getElementById('btnSave').textContent = isAr ? '💾 حفظ بالجدول' : '💾 Save Result';
       document.getElementById('lblLogTitle').textContent = isAr ? '📋 سجل الاختبارات المحفوظة' : '📋 Saved Test Records';
 
@@ -826,6 +1207,8 @@
     window.clearLogs = clearLogs;
     window.switchTab = switchTab;
     window.toggleLang = toggleLang;
+    window.toggleStopwatch = toggleStopwatch;
+    window.resetStopwatch = resetStopwatch;
 
     window.addEventListener('DOMContentLoaded', () => {
       populateModels();
