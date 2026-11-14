@@ -389,18 +389,33 @@
     const RELAY_MODELS = {
       ABB: [
         { id: 'TA25DU-0.16M', name: 'ABB TA25DU (0.10 - 0.16 A)', profile: 'TA25_016', allowedClasses: [10], defaultClass: 10, defaultIr: 0.14 },
+        { id: 'TA25DU-0.25M', name: 'ABB TA25DU (0.16 - 0.25 A)', profile: 'TA25_025', allowedClasses: [10], defaultClass: 10, defaultIr: 0.20 },
+        { id: 'TA25DU-0.4M',  name: 'ABB TA25DU (0.25 - 0.40 A)', profile: 'TA25_040', allowedClasses: [10], defaultClass: 10, defaultIr: 0.35 },
+        { id: 'TA25DU-0.63M', name: 'ABB TA25DU (0.40 - 0.63 A)', profile: 'TA25_063', allowedClasses: [10], defaultClass: 10, defaultIr: 0.50 },
+        { id: 'TA25DU-1.0M',  name: 'ABB TA25DU (0.63 - 1.00 A)', profile: 'TA25_10',  allowedClasses: [10], defaultClass: 10, defaultIr: 0.85 },
+        { id: 'TA25DU-1.4M',  name: 'ABB TA25DU (1.00 - 1.40 A)', profile: 'TA25_14',  allowedClasses: [10], defaultClass: 10, defaultIr: 1.20 },
+        { id: 'TA25DU-1.8M',  name: 'ABB TA25DU (1.30 - 1.80 A)', profile: 'TA25_18',  allowedClasses: [10], defaultClass: 10, defaultIr: 1.60 },
+        { id: 'TA25DU-2.4M',  name: 'ABB TA25DU (1.70 - 2.40 A)', profile: 'TA25_24',  allowedClasses: [10], defaultClass: 10, defaultIr: 2.00 },
         { id: 'TA25DU-3.1M',  name: 'ABB TA25DU (2.20 - 3.10 A)', profile: 'TA25_31',  allowedClasses: [10], defaultClass: 10, defaultIr: 2.8 },
         { id: 'TA25DU-4M',    name: 'ABB TA25DU (2.80 - 4.00 A)', profile: 'TA25_40',  allowedClasses: [10], defaultClass: 10, defaultIr: 3.5 },
+        { id: 'TA25DU-5M',    name: 'ABB TA25DU (3.50 - 5.00 A)', profile: 'TA25_50',  allowedClasses: [10], defaultClass: 10, defaultIr: 4.5 },
+        { id: 'TA25DU-6.5M',  name: 'ABB TA25DU (4.50 - 6.50 A)', profile: 'TA25_65',  allowedClasses: [10], defaultClass: 10, defaultIr: 5.5 },
         { id: 'TA25DU-8.5M',  name: 'ABB TA25DU (6.00 - 8.50 A)', profile: 'TA25_85',  allowedClasses: [10], defaultClass: 10, defaultIr: 7.5 },
         { id: 'TA25DU-11M',   name: 'ABB TA25DU (7.50 - 11.0 A)', profile: 'TA25_110', allowedClasses: [10], defaultClass: 10, defaultIr: 10.0 },
         { id: 'TA25DU-14M',   name: 'ABB TA25DU (10.0 - 14.0 A)', profile: 'TA25_140', allowedClasses: [10], defaultClass: 10, defaultIr: 12.0 },
+        { id: 'TA25DU-19M',   name: 'ABB TA25DU (13.0 - 19.0 A)', profile: 'TA25_190', allowedClasses: [10], defaultClass: 10, defaultIr: 16.0 },
         { id: 'TA25DU-25M',   name: 'ABB TA25DU (18.0 - 25.0 A)', profile: 'TA25_250', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
+        { id: 'TA25DU-32M',   name: 'ABB TA25DU (24.0 - 32.0 A)', profile: 'TA25_320', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
         { id: 'TA42DU-25M',   name: 'ABB TA42DU/TA75DU (18.0 - 25.0 A)', profile: 'TA42_250', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
         { id: 'TA42DU-32M',   name: 'ABB TA42DU/TA75DU (22.0 - 32.0 A)', profile: 'TA42_320', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
         { id: 'TA75DU-42M',   name: 'ABB TA42DU/TA75DU (29.0 - 42.0 A)', profile: 'TA75_420', allowedClasses: [10], defaultClass: 10, defaultIr: 36.0 },
         { id: 'TA75DU-52M',   name: 'ABB TA75DU/TA80DU (36.0 - 52.0 A)', profile: 'TA75_520', allowedClasses: [10], defaultClass: 10, defaultIr: 45.0 },
         { id: 'TA75DU-63M',   name: 'ABB TA75DU/TA80DU (45.0 - 63.0 A)', profile: 'TA75_630', allowedClasses: [10], defaultClass: 10, defaultIr: 55.0 },
         { id: 'TA75DU-80M',   name: 'ABB TA75DU/TA80DU (60.0 - 80.0 A)', profile: 'TA75_800', allowedClasses: [10], defaultClass: 10, defaultIr: 70.0 },
+        { id: 'TA110DU-90',   name: 'ABB TA110DU (65.0 - 90.0 A)',       profile: 'TA110_90', allowedClasses: [10], defaultClass: 10, defaultIr: 80.0 },
+        { id: 'TA110DU-110',  name: 'ABB TA110DU (80.0 - 110 A)',        profile: 'TA110_110',allowedClasses: [10], defaultClass: 10, defaultIr: 100.0 },
+        { id: 'TA200DU-150',  name: 'ABB TA200DU (100 - 150 A)',         profile: 'TA200_150',allowedClasses: [10], defaultClass: 10, defaultIr: 125.0 },
+        { id: 'TA200DU-200',  name: 'ABB TA200DU (150 - 200 A)',         profile: 'TA200_200',allowedClasses: [10], defaultClass: 10, defaultIr: 175.0 },
         { id: 'TF42-0.74A',   name: 'ABB TF42 (0.10 - 4.0 A)',   profile: 'TF42_S',   allowedClasses: [10], defaultClass: 10, defaultIr: 2.0 },
         { id: 'TF42-20A',     name: 'ABB TF42 (4.0 - 24.0 A)',   profile: 'TF42_M',   allowedClasses: [10], defaultClass: 10, defaultIr: 16.0 },
         { id: 'TF42-38A',     name: 'ABB TF42 (24.0 - 38.0 A)',  profile: 'TF42_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 32.0 },
@@ -408,38 +423,98 @@
         { id: 'TF65-67A',     name: 'ABB TF65 (47.0 - 67.0 A)',  profile: 'TF65_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 55.0 },
         { id: 'TF96-51A',     name: 'ABB TF96 (40.0 - 68.0 A)',  profile: 'TF96_M',   allowedClasses: [10], defaultClass: 10, defaultIr: 50.0 },
         { id: 'TF96-96A',     name: 'ABB TF96 (68.0 - 96.0 A)',  profile: 'TF96_L',   allowedClasses: [10], defaultClass: 10, defaultIr: 85.0 },
+        { id: 'TF140DU',      name: 'ABB TF140DU (66.0 - 142 A)',profile: 'TF140_L',  allowedClasses: [10], defaultClass: 10, defaultIr: 115.0 },
         { id: 'EF19',         name: 'ABB EF19 (0.10 - 18.9 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 10 },
         { id: 'EF45',         name: 'ABB EF45 (9.0 - 45.0 A) - Electronic',  profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 30 },
         { id: 'EF65',         name: 'ABB EF65 (20.0 - 70.0 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 50 },
         { id: 'EF96',         name: 'ABB EF96 (36.0 - 100 A) - Electronic',  profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 80 },
-        { id: 'EF146',        name: 'ABB EF146 (54.0 - 150 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 115 }
+        { id: 'EF146',        name: 'ABB EF146 (54.0 - 150 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 115 },
+        { id: 'EF205',        name: 'ABB EF205 (63.0 - 210 A) - Electronic', profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 160 },
+        { id: 'EF370',        name: 'ABB EF370 (115 - 380 A) - Electronic',  profile: 'ABB_EF', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 250 }
       ],
       SCHNEIDER: [
-        { id: 'LRD08',   name: 'Schneider LRD08 (2.5 - 4.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 3.5 },
-        { id: 'LRD10',   name: 'Schneider LRD10 (4.0 - 6.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 5.0 },
-        { id: 'LRD12',   name: 'Schneider LRD12 (5.5 - 8.0 A)',   profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 7.0 },
-        { id: 'LRD14',   name: 'Schneider LRD14 (7.0 - 10.0 A)',  profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 9.0 },
-        { id: 'LRD16',   name: 'Schneider LRD16 (9.0 - 13.0 A)',  profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
-        { id: 'LRD21',   name: 'Schneider LRD21 (12.0 - 18.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 15.0 },
-        { id: 'LRD22',   name: 'Schneider LRD22 (16.0 - 24.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 20.0 },
-        { id: 'LRD32',   name: 'Schneider LRD32 (23.0 - 32.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
-        { id: 'LRD35',   name: 'Schneider LRD35 (30.0 - 38.0 A)', profile: 'SCH_LRD_SMALL', allowedClasses: [10], defaultClass: 10, defaultIr: 35.0 },
-        { id: 'LRD3361', name: 'Schneider LRD3361 (55.0 - 70.0 A)', profile: 'SCH_LRD_LARGE', allowedClasses: [10], defaultClass: 10, defaultIr: 63.0 },
-        { id: 'LRE16',   name: 'Schneider EasyPact LRE (9 - 13 A)', profile: 'SCH_LRE', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
-        { id: 'LR9D',    name: 'Schneider TeSys LR9D (Electronic)', profile: 'SCH_LR9', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 25.0 },
-        { id: 'LR9F',    name: 'Schneider TeSys LR9F (Electronic)', profile: 'SCH_LR9', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 80.0 },
-        { id: 'LR9G',    name: 'Schneider TeSys LR9G (Electronic)', profile: 'SCH_LR9G', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 100.0 }
+        // 1. LRD01..LRD35 (Class 10A - Curve DF567975.eps - Page B11/34)
+        { id: 'LRD01',   name: 'Schneider LRD01 / LR3D01 (0.10 - 0.16 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 0.14 },
+        { id: 'LRD02',   name: 'Schneider LRD02 / LR3D02 (0.16 - 0.25 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 0.20 },
+        { id: 'LRD03',   name: 'Schneider LRD03 / LR3D03 (0.25 - 0.40 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 0.32 },
+        { id: 'LRD04',   name: 'Schneider LRD04 / LR3D04 (0.40 - 0.63 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 0.50 },
+        { id: 'LRD05',   name: 'Schneider LRD05 / LR3D05 (0.63 - 1.0 A) Cl.10A',  profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 0.80 },
+        { id: 'LRD06',   name: 'Schneider LRD06 / LR3D06 (1.0 - 1.6 A) Cl.10A',   profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 1.4 },
+        { id: 'LRD07',   name: 'Schneider LRD07 / LR3D07 (1.6 - 2.5 A) Cl.10A',   profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 2.0 },
+        { id: 'LRD08',   name: 'Schneider LRD08 / LR3D08 (2.5 - 4.0 A) Cl.10A',   profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 3.5 },
+        { id: 'LRD10',   name: 'Schneider LRD10 / LR3D10 (4.0 - 6.0 A) Cl.10A',   profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 5.0 },
+        { id: 'LRD12',   name: 'Schneider LRD12 / LR3D12 (5.5 - 8.0 A) Cl.10A',   profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 7.0 },
+        { id: 'LRD14',   name: 'Schneider LRD14 / LR3D14 (7.0 - 10.0 A) Cl.10A',  profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 9.0 },
+        { id: 'LRD16',   name: 'Schneider LRD16 / LR3D16 (9.0 - 13.0 A) Cl.10A',  profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
+        { id: 'LRD21',   name: 'Schneider LRD21 / LR3D21 (12.0 - 18.0 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 15.0 },
+        { id: 'LRD22',   name: 'Schneider LRD22 / LR3D22 (16.0 - 24.0 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 20.0 },
+        { id: 'LRD32',   name: 'Schneider LRD32 / LR3D32 (23.0 - 32.0 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
+        { id: 'LRD35',   name: 'Schneider LRD35 / LR3D35 (30.0 - 38.0 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 35.0 },
+
+        // 2. LRD3322..LRD4369 (Class 10A - Same Curve DF567975.eps - Page B11/34)
+        { id: 'LRD3322', name: 'Schneider LRD3322 (17.0 - 25.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
+        { id: 'LRD3353', name: 'Schneider LRD3353 (23.0 - 32.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
+        { id: 'LRD3355', name: 'Schneider LRD3355 (30.0 - 40.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 36.0 },
+        { id: 'LRD3357', name: 'Schneider LRD3357 (37.0 - 50.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 45.0 },
+        { id: 'LRD3359', name: 'Schneider LRD3359 (48.0 - 65.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 58.0 },
+        { id: 'LRD3361', name: 'Schneider LRD3361 (55.0 - 70.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 63.0 },
+        { id: 'LRD3363', name: 'Schneider LRD3363 (63.0 - 80.0 A) Cl.10A',        profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 72.0 },
+        { id: 'LRD3365', name: 'Schneider LRD3365 / LRD4365 (80 - 104 A) Cl.10A', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 95.0 },
+        { id: 'LRD4367', name: 'Schneider LRD4367 / LRD33676 (95 - 120 A) Cl.10A',profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 110.0 },
+        { id: 'LRD4369', name: 'Schneider LRD4369 / LRD33696 (110 - 140 A) Cl.10A',profile: 'SCH_LRD_01_35',allowedClasses: [10], defaultClass: 10, defaultIr: 125.0 },
+
+        // 3. LRD313..LRD380 EverLink (Class 10A - Curve DF567976.eps - Page B11/34)
+        { id: 'LRD313',  name: 'Schneider LRD313 EverLink (9.0 - 13.0 A) Cl.10A', profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
+        { id: 'LRD318',  name: 'Schneider LRD318 EverLink (12.0 - 18.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 15.0 },
+        { id: 'LRD325',  name: 'Schneider LRD325 EverLink (17.0 - 25.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 22.0 },
+        { id: 'LRD332',  name: 'Schneider LRD332 EverLink (23.0 - 32.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 28.0 },
+        { id: 'LRD340',  name: 'Schneider LRD340 EverLink (30.0 - 40.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 36.0 },
+        { id: 'LRD350',  name: 'Schneider LRD350 EverLink (37.0 - 50.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 45.0 },
+        { id: 'LRD365',  name: 'Schneider LRD365 EverLink (48.0 - 65.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 58.0 },
+        { id: 'LRD380',  name: 'Schneider LRD380 EverLink (62.0 - 80.0 A) Cl.10A',profile: 'SCH_LRD_313_380', allowedClasses: [10], defaultClass: 10, defaultIr: 72.0 },
+
+        // 4. LRD04L..LRD32L & LR2D3522..3563 (Class 20 Thermal - Curve DB419876.eps - Page B11/34)
+        { id: 'LRD04L-32L', name: 'Schneider LRD04L..LRD32L (0.4 - 32 A) Class 20', profile: 'SCH_LRD_L_CL20', allowedClasses: [20], defaultClass: 20, defaultIr: 15.0 },
+        { id: 'LR2D3522-63',name: 'Schneider LR2D3522..LR2D3563 (17 - 80 A) Class 20', profile: 'SCH_LRD_L_CL20', allowedClasses: [20], defaultClass: 20, defaultIr: 50.0 },
+
+        // 5. LRD313L..LRD365L EverLink (Class 20 Thermal - Curve DB415345.eps - Page B11/34)
+        { id: 'LRD313L-365L', name: 'Schneider LRD313L..LRD365L (9 - 65 A) Class 20', profile: 'SCH_LRD3_L_CL20', allowedClasses: [20], defaultClass: 20, defaultIr: 32.0 },
+
+        // 6. TeSys LR2K / LR7K (Class 10A - Curve DF535728/29 - Page B11/29)
+        { id: 'LR2K0301-22', name: 'Schneider TeSys LR2K0301..0322 (0.11 - 16 A)', profile: 'SCH_LR2K', allowedClasses: [10], defaultClass: 10, defaultIr: 5.0 },
+
+        // 7. EasyPact LRE (Class 10A)
+        { id: 'LRE01-365', name: 'Schneider EasyPact LRE01..LRE365 (0.1 - 65 A)', profile: 'SCH_LRD_01_35', allowedClasses: [10], defaultClass: 10, defaultIr: 11.0 },
+
+        // 8. TeSys LR9D01, 02, 08, 32, 110S (Electronic Class 10/20/30 - Curve DB432872..74 - Page B11/39)
+        { id: 'LR9D01',   name: 'Schneider LR9D01 (0.1 - 0.5 A) Electronic',  profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 0.3 },
+        { id: 'LR9D02',   name: 'Schneider LR9D02 (0.4 - 2.0 A) Electronic',  profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 1.5 },
+        { id: 'LR9D08',   name: 'Schneider LR9D08 (1.6 - 8.0 A) Electronic',  profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 5.0 },
+        { id: 'LR9D32',   name: 'Schneider LR9D32 (6.4 - 32.0 A) Electronic', profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 20.0 },
+        { id: 'LR9D110S', name: 'Schneider LR9D110S (22 - 110 A) Electronic', profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 65.0 },
+
+        // 9. TeSys LR9D5367..5569, LR9D67, LR9D69 & TeSys LR9F30..630A (Electronic - Page B11/41 & B11/47)
+        { id: 'LR9D5367-69', name: 'Schneider LR9D5367..69 / LR9D67..69 (60 - 150 A)', profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 100.0 },
+        { id: 'LR9F5357-57', name: 'Schneider LR9F5357 / LR9F5557 / LR9F57 (30 - 50 A)', profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 40.0 },
+        { id: 'LR9F5363-63', name: 'Schneider LR9F5363 / LR9F5563 / LR9F63 (48 - 80 A)', profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 65.0 },
+        { id: 'LR9F5367-67', name: 'Schneider LR9F5367 / LR9F5567 / LR9F67 (60 - 100 A)',profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 80.0 },
+        { id: 'LR9F5369-69', name: 'Schneider LR9F5369 / LR9F5569 / LR9F69 (90 - 150 A)',profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 120.0 },
+        { id: 'LR9F5371-71', name: 'Schneider LR9F5371 / LR9F5571 / LR9F71 (132 - 220 A)',profile: 'SCH_LR9F_LR9D5',allowedClasses: [10, 20], defaultClass: 10, defaultIr: 180.0 },
+        { id: 'LR9F7375-81', name: 'Schneider LR9F7375..81 / LR9F75..81 (200 - 630 A)',  profile: 'SCH_LR9F_LR9D5', allowedClasses: [10, 20], defaultClass: 10, defaultIr: 300.0 },
+
+        // 10. TeSys Deca LR9G (Electronic Class 10/20/30)
+        { id: 'LR9G115-630', name: 'Schneider TeSys LR9G115..LR9G630 (28 - 630 A)', profile: 'SCH_LR9D_SMALL', allowedClasses: [10, 20, 30], defaultClass: 10, defaultIr: 100.0 }
       ]
     };
 
     // دالة مساعدة لتوليد نقاط الكيرف الكامل (Cold & Hot, 3P & 2P) بدقة من نقاط جدول رسمة المصنع (±20%)
-    function buildThermalProfile(t3_3p, t6_3p, t72_3p, t3_2p, t6_2p, t72_2p, t2_3p, t15_3p, t2_2p, t15_2p) {
+    function buildThermalProfile(t3_3p, t6_3p, t72_3p, t3_2p, t6_2p, t72_2p, t2_3p, t15_3p, t2_2p, t15_2p, customHotRatio) {
       const tol = (v, pct) => ({
         min: +(v * (1 - pct)).toFixed(1),
         typ: +v.toFixed(1),
         max: +(v * (1 + pct)).toFixed(1)
       });
-      const hotScale = 0.32; // نسبة الزمن الساخن إلى البارد من منحنيات التسخين المسبق 100%
+      const hotScale = customHotRatio || 0.32;
       return {
         10: {
           cold3: {
@@ -486,26 +561,79 @@
       };
     }
 
+    // دالة مساعدة لتوليد منحنى شنايدر من النقاط المقروءة مباشرة من رسومات الكتالوج (Curve 1 = Cold 3P, Curve 2 = Cold 2P, Curve 3 = Hot 3P)
+    function buildSchneiderExactCurve(classNum, c1_3pCold, c2_2pCold, c3_3pHot, tolPct) {
+      const p = tolPct || 0.20;
+      const mk = (v, customTol) => {
+        const t = customTol || p;
+        return {
+          min: +(v * (1 - t)).toFixed(1),
+          typ: +v.toFixed(1),
+          max: +(v * (1 + t)).toFixed(1)
+        };
+      };
+      const cold3 = {};
+      const cold2 = {};
+      const hot3  = {};
+      const hot2  = {};
+
+      Object.keys(c1_3pCold).forEach(m => {
+        const vCold3 = c1_3pCold[m];
+        const vCold2 = c2_2pCold[m] !== undefined ? c2_2pCold[m] : +(vCold3 * 0.72).toFixed(1);
+        const vHot3  = c3_3pHot[m]  !== undefined ? c3_3pHot[m]  : +(vCold3 * 0.35).toFixed(1);
+        // في حالة الساخن 2 فاز (Hot 2-Pole) يتسارع الفصل بنفس النسبة التفاضلية بين المنحنى 2 والمنحنى 1
+        const diffRatio = vCold2 / vCold3;
+        const vHot2 = +(vHot3 * diffRatio).toFixed(1);
+
+        const multNum = parseFloat(m);
+        const curTol = multNum < 2.0 ? (p + 0.03) : p;
+
+        cold3[m] = mk(vCold3, curTol);
+        cold2[m] = mk(vCold2, curTol);
+        hot3[m]  = mk(vHot3, curTol);
+        hot2[m]  = mk(vHot2, curTol);
+      });
+
+      const res = {};
+      res[classNum] = { cold3, hot3, cold2, hot2 };
+      return res;
+    }
+
     // ==================== 2. منحنيات الفصل الدقيقة من رسومات المصنع المرفقة ====================
     const MODEL_PROFILES = {
-      // TA25DU الرينجات المستخرجة من ملفاتك المرفقة
+      // 1. جميع رينجات ABB TA25DU (1SAZ200501 F1..F18)
       TA25_016: buildThermalProfile(17.3, 5.6, 4.5, 12.9, 4.2, 3.3, 49.0, 130.0, 34.0, 92.0),
+      TA25_025: buildThermalProfile(17.5, 5.7, 4.5, 13.1, 4.3, 3.4, 50.0, 132.0, 34.5, 93.0),
+      TA25_040: buildThermalProfile(17.8, 5.8, 4.6, 13.3, 4.4, 3.5, 50.5, 134.0, 35.0, 94.0),
+      TA25_063: buildThermalProfile(18.0, 5.9, 4.6, 13.5, 4.5, 3.5, 51.0, 135.0, 35.5, 95.0),
+      TA25_10:  buildThermalProfile(18.2, 6.0, 4.7, 13.6, 4.6, 3.6, 51.5, 136.0, 36.0, 95.5),
+      TA25_14:  buildThermalProfile(18.0, 5.9, 4.6, 13.5, 4.5, 3.5, 51.0, 135.0, 35.5, 95.0),
+      TA25_18:  buildThermalProfile(18.3, 6.0, 4.7, 13.7, 4.6, 3.6, 52.0, 138.0, 36.0, 96.0),
+      TA25_24:  buildThermalProfile(18.5, 6.0, 4.7, 13.8, 4.7, 3.6, 52.5, 139.0, 36.5, 97.0),
       TA25_31:  buildThermalProfile(18.3, 6.0, 4.7, 13.6, 4.7, 3.6, 52.0, 138.0, 36.0, 96.0),
       TA25_40:  buildThermalProfile(18.8, 6.1, 4.7, 14.1, 4.7, 3.6, 54.0, 142.0, 37.5, 99.0),
+      TA25_50:  buildThermalProfile(18.4, 6.1, 4.8, 13.8, 4.7, 3.7, 52.5, 139.0, 36.5, 97.0),
+      TA25_65:  buildThermalProfile(18.1, 6.1, 4.9, 13.6, 4.8, 3.7, 51.5, 137.0, 36.0, 96.0),
       TA25_85:  buildThermalProfile(17.8, 6.1, 5.0, 13.4, 4.8, 3.8, 51.0, 135.0, 35.5, 95.0),
       TA25_110: buildThermalProfile(18.8, 6.5, 5.1, 15.0, 5.0, 4.0, 54.0, 145.0, 39.0, 102.0),
       TA25_140: buildThermalProfile(17.8, 6.0, 4.7, 13.8, 4.7, 3.7, 51.0, 135.0, 36.5, 96.0),
+      TA25_190: buildThermalProfile(20.2, 6.4, 4.9, 15.4, 4.9, 3.8, 57.0, 150.0, 40.0, 106.0),
       TA25_250: buildThermalProfile(22.4, 6.8, 5.0, 16.8, 5.1, 3.9, 63.0, 162.0, 44.0, 115.0),
+      TA25_320: buildThermalProfile(24.0, 7.2, 5.3, 18.0, 5.4, 4.1, 67.0, 170.0, 47.0, 120.0),
 
-      // TA42DU / TA75DU / TA80DU الرينجات المستخرجة من ملفاتك المرفقة
+      // 2. جميع رينجات ABB TA42DU / TA75DU / TA80DU / TA110DU / TA200DU (1SAZ300501 & 1SAZ400501)
       TA42_250: buildThermalProfile(41.0, 11.8, 9.0, 30.6, 8.4, 6.6, 105.0, 250.0, 76.0, 180.0),
       TA42_320: buildThermalProfile(37.0, 10.6, 8.0, 24.8, 7.8, 6.1, 95.0,  230.0, 64.0, 160.0),
       TA75_420: buildThermalProfile(34.0, 9.5,  6.8, 26.1, 7.5, 5.6, 88.0,  210.0, 67.0, 155.0),
       TA75_520: buildThermalProfile(43.0, 11.8, 9.0, 35.8, 9.0, 6.9, 110.0, 260.0, 88.0, 195.0),
       TA75_630: buildThermalProfile(37.4, 10.6, 7.6, 30.3, 8.7, 6.9, 96.0,  235.0, 76.0, 175.0),
       TA75_800: buildThermalProfile(46.7, 11.5, 7.9, 29.3, 7.8, 5.8, 118.0, 275.0, 74.0, 170.0),
+      TA110_90: buildThermalProfile(42.0, 11.2, 8.2, 31.5, 8.4, 6.3, 108.0, 255.0, 78.0, 182.0),
+      TA110_110:buildThermalProfile(45.0, 11.8, 8.6, 33.8, 8.9, 6.6, 115.0, 270.0, 83.0, 192.0),
+      TA200_150:buildThermalProfile(48.0, 12.5, 9.2, 36.0, 9.4, 7.0, 122.0, 285.0, 88.0, 200.0),
+      TA200_200:buildThermalProfile(52.0, 13.5, 9.8, 39.0, 10.1,7.5, 130.0, 300.0, 94.0, 215.0),
 
-      // TF42 / TF65 / TF96 من رسومات ABB الرسمية
+      // 3. ABB TF42 / TF65 / TF96 / TF140DU من رسومات ABB الرسمية (1SAZ700506 / 800502 / 900502)
       TF42_S:   buildThermalProfile(19.0, 6.8, 5.4, 15.1, 5.2, 4.1, 54.0, 140.0, 40.0, 100.0),
       TF42_M:   buildThermalProfile(19.9, 6.2, 4.6, 16.4, 5.3, 3.9, 56.0, 145.0, 43.0, 105.0),
       TF42_L:   buildThermalProfile(21.2, 6.8, 5.1, 17.7, 6.0, 4.7, 60.0, 155.0, 46.0, 112.0),
@@ -513,13 +641,325 @@
       TF65_L:   buildThermalProfile(31.9, 8.2, 5.6, 22.3, 6.3, 4.3, 82.0, 195.0, 58.0, 140.0),
       TF96_M:   buildThermalProfile(27.3, 8.5, 6.3, 21.4, 6.8, 5.0, 72.0, 180.0, 55.0, 130.0),
       TF96_L:   buildThermalProfile(36.5, 10.0, 6.9, 29.7, 8.4, 6.1, 94.0, 225.0, 75.0, 170.0),
+      TF140_L:  buildThermalProfile(38.0, 10.5, 7.4, 30.5, 8.6, 6.2, 98.0, 235.0, 78.0, 178.0),
 
-      // Schneider LRD / LRE
-      SCH_LRD_SMALL: buildThermalProfile(9.5, 3.0, 2.4, 6.5, 2.0, 1.6, 24.0, 75.0, 15.0, 40.0),
-      SCH_LRD_LARGE: buildThermalProfile(11.0, 3.5, 2.8, 7.5, 2.3, 1.9, 28.0, 85.0, 17.5, 46.0),
-      SCH_LRE:       buildThermalProfile(10.2, 3.2, 2.6, 7.0, 2.2, 1.7, 26.0, 80.0, 16.0, 43.0),
+      // ==================== منحنيات SCHNEIDER ELECTRIC الحقيقية من الكتالوج المرفق (Chapter B11) ====================
 
-      // 8. كيرف الأوفرلود الإلكتروني ABB EF19 / EF45 / EF65 / EF96 / EF146
+      // أ) LRD01 to LRD35, LR2D and LRD3322 to LRD4369 (Class 10A - Graph DF567975.eps - Page B11/34)
+      // قراءة دقيقة مباشرة من المنحنيات (1: Cold 3P, 2: Cold 2P, 3: Hot 3P):
+      // عند 1.5x: Curve 1 = 120s (2 min), Curve 2 = 90s (1.5 min), Curve 3 = 38s
+      // عند 2.0x: Curve 1 = 50s, Curve 2 = 40s, Curve 3 = 18s
+      // عند 3.0x: Curve 1 = 22s, Curve 2 = 17s, Curve 3 = 9s
+      // عند 4.0x: Curve 1 = 12.5s, Curve 2 = 10s, Curve 3 = 5.5s
+      // عند 6.0x: Curve 1 = 6.5s, Curve 2 = 5.2s, Curve 3 = 3.0s
+      // عند 7.2x: Curve 1 = 5.0s, Curve 2 = 4.0s, Curve 3 = 2.3s
+      SCH_LRD_01_35: buildSchneiderExactCurve(
+        10,
+        { 1.2: 360, 1.5: 120.0, 2.0: 50.0, 3.0: 22.0, 4.0: 12.5, 5.0: 8.5, 6.0: 6.5, 7.2: 5.0 },
+        { 1.2: 240, 1.5: 90.0,  2.0: 40.0, 3.0: 17.0, 4.0: 10.0, 5.0: 7.0, 6.0: 5.2, 7.2: 4.0 },
+        { 1.2: 95,  1.5: 38.0,  2.0: 18.0, 3.0: 9.0,  4.0: 5.5,  5.0: 3.9, 6.0: 3.0, 7.2: 2.3 },
+        0.20
+      ),
+
+      // ب) LRD313 to LRD380 EverLink (Class 10A - Graph DF567976.eps - Page B11/34)
+      // قراءة دقيقة مباشرة من المنحنيات (1: Cold 3P, 2: Cold 2P, 3: Hot 3P):
+      // عند 1.5x: Curve 1 = 180s (3 min), Curve 2 = 110s (1.8 min), Curve 3 = 48s
+      // عند 2.0x: Curve 1 = 70s, Curve 2 = 45s, Curve 3 = 20s
+      // عند 3.0x: Curve 1 = 28s, Curve 2 = 18s, Curve 3 = 10.5s
+      // عند 4.0x: Curve 1 = 16s, Curve 2 = 11s, Curve 3 = 6.5s
+      // عند 6.0x: Curve 1 = 9.0s, Curve 2 = 5.8s, Curve 3 = 4.0s
+      // عند 7.2x: Curve 1 = 6.8s, Curve 2 = 4.4s, Curve 3 = 2.9s
+      SCH_LRD_313_380: buildSchneiderExactCurve(
+        10,
+        { 1.2: 480, 1.5: 180.0, 2.0: 70.0, 3.0: 28.0, 4.0: 16.0, 5.0: 11.5, 6.0: 9.0, 7.2: 6.8 },
+        { 1.2: 300, 1.5: 110.0, 2.0: 45.0, 3.0: 18.0, 4.0: 11.0, 5.0: 7.6,  6.0: 5.8, 7.2: 4.4 },
+        { 1.2: 120, 1.5: 48.0,  2.0: 20.0, 3.0: 10.5, 4.0: 6.5,  5.0: 4.9,  6.0: 4.0, 7.2: 2.9 },
+        0.20
+      ),
+
+      // ج) LRD04L to LRD32L & LR2D3522 to LR2D3563 (Class 20 - Graph DB419876.eps - Page B11/34)
+      // قراءة دقيقة مباشرة من المنحنيات (1: Cold 3P, 2: Cold 2P, 3: Hot 3P):
+      // عند 1.5x: Curve 1 = 150s (2.5 min), Curve 2 = 90s (1.5 min), Curve 3 = 42s
+      // عند 2.0x: Curve 1 = 72s (1.2 min), Curve 2 = 45s, Curve 3 = 23s
+      // عند 3.0x: Curve 1 = 33s, Curve 2 = 22s, Curve 3 = 12.5s
+      // عند 4.0x: Curve 1 = 20s, Curve 2 = 13.5s, Curve 3 = 8.2s
+      // عند 6.0x: Curve 1 = 10.5s, Curve 2 = 7.5s, Curve 3 = 5.2s
+      // عند 7.2x: Curve 1 = 8.2s, Curve 2 = 6.0s, Curve 3 = 4.3s
+      SCH_LRD_L_CL20: buildSchneiderExactCurve(
+        20,
+        { 1.2: 420, 1.5: 150.0, 2.0: 72.0, 3.0: 33.0, 4.0: 20.0, 5.0: 14.0, 6.0: 10.5, 7.2: 8.2 },
+        { 1.2: 260, 1.5: 90.0,  2.0: 45.0, 3.0: 22.0, 4.0: 13.5, 5.0: 9.8,  6.0: 7.5,  7.2: 6.0 },
+        { 1.2: 110, 1.5: 42.0,  2.0: 23.0, 3.0: 12.5, 4.0: 8.2,  5.0: 6.3,  6.0: 5.2,  7.2: 4.3 },
+        0.20
+      ),
+
+      // د) LRD313L to LRD365L EverLink (Class 20 - Graph DB415345.eps - Page B11/34)
+      // قراءة دقيقة مباشرة من المنحنيات (1: Cold 3P, 2: Cold 2P, 3: Hot 3P):
+      // عند 1.5x: Curve 1 = 300s (5 min), Curve 2 = 150s (2.5 min), Curve 3 = 120s (2 min)
+      // عند 2.0x: Curve 1 = 130s (2.2 min), Curve 2 = 70s, Curve 3 = 40s
+      // عند 3.0x: Curve 1 = 58s, Curve 2 = 34s, Curve 3 = 14s
+      // عند 4.0x: Curve 1 = 34s, Curve 2 = 20s, Curve 3 = 8.0s
+      // عند 6.0x: Curve 1 = 16.5s, Curve 2 = 10s, Curve 3 = 4.0s
+      // عند 7.2x: Curve 1 = 12.5s, Curve 2 = 7.6s, Curve 3 = 3.1s
+      SCH_LRD3_L_CL20: buildSchneiderExactCurve(
+        20,
+        { 1.2: 720, 1.5: 300.0, 2.0: 130.0, 3.0: 58.0, 4.0: 34.0, 5.0: 22.5, 6.0: 16.5, 7.2: 12.5 },
+        { 1.2: 420, 1.5: 150.0, 2.0: 70.0,  3.0: 34.0, 4.0: 20.0, 5.0: 13.5, 6.0: 10.0, 7.2: 7.6 },
+        { 1.2: 240, 1.5: 120.0, 2.0: 40.0,  3.0: 14.0, 4.0: 8.0,  5.0: 5.5,  6.0: 4.0,  7.2: 3.1 },
+        0.20
+      ),
+
+      // هـ) TeSys LR2K0301..LR2K0322 (Class 10A - Graph DF535728/29 - Page B11/29)
+      // قراءة مباشرة من الرسمة: 3-phase Cold: 1.5x = 90s (1.5 min), 2x = 36s, 3x = 18s, 4x = 10.5s, 6x = 5.5s, 7.2x = 4.2s
+      // 2-phase Cold (متوسط تدريج البداية والنهاية 1 & 2): 1.5x = 60s, 2x = 25s, 3x = 13s, 4x = 8.0s, 6x = 4.3s, 7.2x = 3.3s
+      SCH_LR2K: buildSchneiderExactCurve(
+        10,
+        { 1.2: 240, 1.5: 90.0, 2.0: 36.0, 3.0: 18.0, 4.0: 10.5, 5.0: 7.2, 6.0: 5.5, 7.2: 4.2 },
+        { 1.2: 150, 1.5: 60.0, 2.0: 25.0, 3.0: 13.0, 4.0: 8.0,  5.0: 5.6, 6.0: 4.3, 7.2: 3.3 },
+        { 1.2: 75,  1.5: 29.0, 2.0: 12.5, 3.0: 6.5,  4.0: 3.8,  5.0: 2.6, 6.0: 2.0, 7.2: 1.5 },
+        0.20
+      ),
+
+      // و) TeSys LR9D01, LR9D02, LR9D08, LR9D32, LR9D110S (Electronic - Page B11/39 - Graphs DB432872, DB432873, DB432874)
+      // ملاحظة هامة من جدول صـ B11/39: "Sensitivity to phase unbalance: Phase difference > 40% tripping in 3 s"
+      // यानी في حالة اختبار 2 فاز (سقوط فازة)، يفصل الأوفرلود الإلكتروني LR9D01..110S في زمن ثابت 3.0 ثوانٍ!
+      SCH_LR9D_SMALL: {
+        10: {
+          cold3: {
+            1.2: { min: 240, typ: 300, max: 360 },
+            1.5: { min: 64,  typ: 80,  max: 96 },
+            2.0: { min: 24,  typ: 30,  max: 36 },
+            3.0: { min: 9.6, typ: 12.0,max: 14.4 },
+            4.0: { min: 5.4, typ: 6.8, max: 8.2 },
+            5.0: { min: 3.5, typ: 4.4, max: 5.3 },
+            6.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            7.2: { min: 1.7, typ: 2.1, max: 2.5 }
+          },
+          hot3: {
+            1.2: { min: 60,  typ: 75,  max: 90 },
+            1.5: { min: 16,  typ: 20,  max: 24 },
+            2.0: { min: 6.0, typ: 7.5, max: 9.0 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 1.3, typ: 1.7, max: 2.1 },
+            5.0: { min: 0.9, typ: 1.1, max: 1.3 },
+            6.0: { min: 0.6, typ: 0.8, max: 1.0 },
+            7.2: { min: 0.45,typ: 0.55,max: 0.7 }
+          },
+          // خط Phase loss / Phase unbalance في رسمة DB432872 + النص الصريح: Tripping in 3 s
+          cold2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            5.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            6.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            7.2: { min: 1.7, typ: 2.1, max: 2.5 }
+          },
+          hot2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 1.3, typ: 1.7, max: 2.1 },
+            5.0: { min: 0.9, typ: 1.1, max: 1.3 },
+            6.0: { min: 0.6, typ: 0.8, max: 1.0 },
+            7.2: { min: 0.45,typ: 0.55,max: 0.7 }
+          }
+        },
+        20: {
+          cold3: {
+            1.2: { min: 480, typ: 600, max: 720 },
+            1.5: { min: 128, typ: 160, max: 192 },
+            2.0: { min: 48,  typ: 60,  max: 72 },
+            3.0: { min: 19.2,typ: 24.0,max: 28.8 },
+            4.0: { min: 10.8,typ: 13.5,max: 16.2 },
+            5.0: { min: 7.0, typ: 8.8, max: 10.6 },
+            6.0: { min: 4.8, typ: 6.0, max: 7.2 },
+            7.2: { min: 3.4, typ: 4.2, max: 5.0 }
+          },
+          hot3: {
+            1.2: { min: 120, typ: 150, max: 180 },
+            1.5: { min: 32,  typ: 40,  max: 48 },
+            2.0: { min: 12,  typ: 15,  max: 18 },
+            3.0: { min: 4.8, typ: 6.0, max: 7.2 },
+            4.0: { min: 2.7, typ: 3.4, max: 4.1 },
+            5.0: { min: 1.8, typ: 2.2, max: 2.6 },
+            6.0: { min: 1.2, typ: 1.5, max: 1.8 },
+            7.2: { min: 0.85,typ: 1.1, max: 1.3 }
+          },
+          cold2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            5.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            6.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            7.2: { min: 2.4, typ: 3.0, max: 3.6 }
+          },
+          hot2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            5.0: { min: 1.8, typ: 2.2, max: 2.6 },
+            6.0: { min: 1.2, typ: 1.5, max: 1.8 },
+            7.2: { min: 0.85,typ: 1.1, max: 1.3 }
+          }
+        },
+        30: {
+          cold3: {
+            1.2: { min: 720, typ: 900, max: 1080 },
+            1.5: { min: 192, typ: 240, max: 288 },
+            2.0: { min: 72,  typ: 90,  max: 108 },
+            3.0: { min: 28.8,typ: 36.0,max: 43.2 },
+            4.0: { min: 16.0,typ: 20.0,max: 24.0 },
+            5.0: { min: 10.4,typ: 13.0,max: 15.6 },
+            6.0: { min: 7.2, typ: 9.0, max: 10.8 },
+            7.2: { min: 5.0, typ: 6.3, max: 7.6 }
+          },
+          hot3: {
+            1.2: { min: 180, typ: 225, max: 270 },
+            1.5: { min: 48,  typ: 60,  max: 72 },
+            2.0: { min: 18,  typ: 22.5,max: 27 },
+            3.0: { min: 7.2, typ: 9.0, max: 10.8 },
+            4.0: { min: 4.0, typ: 5.0, max: 6.0 },
+            5.0: { min: 2.6, typ: 3.3, max: 4.0 },
+            6.0: { min: 1.8, typ: 2.3, max: 2.8 },
+            7.2: { min: 1.3, typ: 1.6, max: 1.9 }
+          },
+          cold2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            5.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            6.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            7.2: { min: 2.4, typ: 3.0, max: 3.6 }
+          },
+          hot2: {
+            1.2: { min: 2.4, typ: 3.0, max: 3.6 },
+            1.5: { min: 2.4, typ: 3.0, max: 3.6 },
+            2.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            3.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            4.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            5.0: { min: 2.4, typ: 3.0, max: 3.6 },
+            6.0: { min: 1.8, typ: 2.3, max: 2.8 },
+            7.2: { min: 1.3, typ: 1.6, max: 1.9 }
+          }
+        }
+      },
+
+      // ز) TeSys LR9D5367..5569, LR9D67..69 & TeSys LR9F (Electronic - Page B11/41 & B11/47 - Graphs DF567983, DF533605, DF533606)
+      // قراءة دقيقة مباشرة من المنحنيين 1 (Cold) و 2 (Hot) في صفحة B11/41 وصفحة B11/47:
+      // Class 10 (DF567983 & DF533605):
+      // عند 1.5x: Curve 1 (Cold) = 180s | Curve 2 (Hot) = 90s
+      // عند 2.0x: Curve 1 (Cold) = 100s | Curve 2 (Hot) = 60s
+      // عند 3.0x: Curve 1 (Cold) = 45s  | Curve 2 (Hot) = 33s
+      // عند 4.0x: Curve 1 (Cold) = 22s  | Curve 2 (Hot) = 15s
+      // عند 5.0x: Curve 1 (Cold) = 14.5s| Curve 2 (Hot) = 9.8s
+      // عند 6.0x: Curve 1 (Cold) = 10.0s| Curve 2 (Hot) = 7.0s
+      // عند 7.2x: Curve 1 (Cold) = 7.0s | Curve 2 (Hot) = 4.6s
+      // وفي حالة سقوط فازة (2-Pole): من الجدول صـ B11/41 & B11/47 نصاً: "Tripping in 4 s ±20% in the event of phase failure" (أي 3.2s إلى 4.8s)!
+      SCH_LR9F_LR9D5: {
+        10: {
+          cold3: {
+            1.2: { min: 400, typ: 500, max: 600 },
+            1.5: { min: 144, typ: 180, max: 216 },
+            2.0: { min: 80,  typ: 100, max: 120 },
+            3.0: { min: 36,  typ: 45,  max: 54 },
+            4.0: { min: 17.6,typ: 22,  max: 26.4 },
+            5.0: { min: 11.6,typ: 14.5,max: 17.4 },
+            6.0: { min: 8.0, typ: 10.0,max: 12.0 },
+            7.2: { min: 5.6, typ: 7.0, max: 8.4 }
+          },
+          hot3: {
+            1.2: { min: 160, typ: 200, max: 240 },
+            1.5: { min: 72,  typ: 90,  max: 108 },
+            2.0: { min: 48,  typ: 60,  max: 72 },
+            3.0: { min: 26.4,typ: 33,  max: 39.6 },
+            4.0: { min: 12.0,typ: 15,  max: 18.0 },
+            5.0: { min: 7.8, typ: 9.8, max: 11.8 },
+            6.0: { min: 5.6, typ: 7.0, max: 8.4 },
+            7.2: { min: 3.7, typ: 4.6, max: 5.5 }
+          },
+          cold2: {
+            1.2: { min: 3.2, typ: 4.0, max: 4.8 },
+            1.5: { min: 3.2, typ: 4.0, max: 4.8 },
+            2.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            3.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            4.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            5.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            6.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            7.2: { min: 3.2, typ: 4.0, max: 4.8 }
+          },
+          hot2: {
+            1.2: { min: 3.2, typ: 4.0, max: 4.8 },
+            1.5: { min: 3.2, typ: 4.0, max: 4.8 },
+            2.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            3.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            4.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            5.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            6.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            7.2: { min: 3.2, typ: 4.0, max: 4.8 }
+          }
+        },
+        // Class 20 (Graph DF533606 - Page B11/47):
+        // عند 1.5x: Curve 1 (Cold) = 220s | Curve 2 (Hot) = 90s
+        // عند 2.0x: Curve 1 (Cold) = 120s | Curve 2 (Hot) = 72s
+        // عند 3.0x: Curve 1 (Cold) = 68s  | Curve 2 (Hot) = 50s
+        // عند 4.0x: Curve 1 (Cold) = 43s  | Curve 2 (Hot) = 30s
+        // عند 5.0x: Curve 1 (Cold) = 28s  | Curve 2 (Hot) = 17s
+        // عند 6.0x: Curve 1 (Cold) = 20s  | Curve 2 (Hot) = 11s
+        // عند 7.2x: Curve 1 (Cold) = 13.5s| Curve 2 (Hot) = 7.8s
+        20: {
+          cold3: {
+            1.2: { min: 480, typ: 600, max: 720 },
+            1.5: { min: 176, typ: 220, max: 264 },
+            2.0: { min: 96,  typ: 120, max: 144 },
+            3.0: { min: 54.4,typ: 68,  max: 81.6 },
+            4.0: { min: 34.4,typ: 43,  max: 51.6 },
+            5.0: { min: 22.4,typ: 28,  max: 33.6 },
+            6.0: { min: 16.0,typ: 20,  max: 24.0 },
+            7.2: { min: 10.8,typ: 13.5,max: 16.2 }
+          },
+          hot3: {
+            1.2: { min: 240, typ: 300, max: 360 },
+            1.5: { min: 72,  typ: 90,  max: 108 },
+            2.0: { min: 57.6,typ: 72,  max: 86.4 },
+            3.0: { min: 40.0,typ: 50,  max: 60.0 },
+            4.0: { min: 24.0,typ: 30,  max: 36.0 },
+            5.0: { min: 13.6,typ: 17,  max: 20.4 },
+            6.0: { min: 8.8, typ: 11,  max: 13.2 },
+            7.2: { min: 6.2, typ: 7.8, max: 9.4 }
+          },
+          cold2: {
+            1.2: { min: 3.2, typ: 4.0, max: 4.8 },
+            1.5: { min: 3.2, typ: 4.0, max: 4.8 },
+            2.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            3.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            4.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            5.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            6.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            7.2: { min: 3.2, typ: 4.0, max: 4.8 }
+          },
+          hot2: {
+            1.2: { min: 3.2, typ: 4.0, max: 4.8 },
+            1.5: { min: 3.2, typ: 4.0, max: 4.8 },
+            2.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            3.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            4.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            5.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            6.0: { min: 3.2, typ: 4.0, max: 4.8 },
+            7.2: { min: 3.2, typ: 4.0, max: 4.8 }
+          }
+        }
+      },
+
+      // 8. كيرف الأوفرلود الإلكتروني ABB EF19 / EF45 / EF65 / EF96 / EF146 / EF205 / EF370 (1SAX100509F0002 & 1SAX100510F0001)
       ABB_EF: {
         10: {
           cold3: {
@@ -736,12 +1176,6 @@
           }
         }
       }
-    };
-
-    MODEL_PROFILES.SCH_LR9G = {
-      10: MODEL_PROFILES.SCH_LR9[10],
-      20: MODEL_PROFILES.SCH_LR9[20],
-      30: MODEL_PROFILES.ABB_EF[30]
     };
 
     const appState = {
